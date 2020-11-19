@@ -1,0 +1,58 @@
+@(require (for-label ...)) 어떤 함수에 대한 문서를 하이퍼링크로 나타내고 싶을 경우 for-label 구문을 사용해서 require해야 한다.
+
+@title{Installation}
+
+@section{Prerequisites}
+
+@itemlist[
+
+@item{@link["http://link.to.reference"]{name the link} write...}
+
+I think it would be convenient to name a link as links are typically too long, and makes me hard to read words before & after the link.
+
+@item{write another content of @bold{item}, or @italic{item}. @envvar{PATH} and @exec{racket} is what I need to research more.}
+
+@code라는 태그도 있는데, @exec 태그와 다른 점이 어떤 건지 알고싶다.
+
+@terminal{~ : racket
+Welcome to Racket v.@(version).
+>
+}
+
+코드를 써야할 일이 있을 경우에 이 태그가 필요할 것 같다. indenting은 따로 해야 하는지, 해야 한다면 어떤 식으로 써야하는 건지 알아봐야 할 것 같다. 추가로, 코드를 쓸 때는 이 태그만 사용할 수 있는지도.
+
+@item{After that, you can also update the package from the command line:
+@terminal{raco pkg update --update-deps pollen}
+@commandline{raco pollen render hello.txt.pp}
+위 둘은 뭐가 다른거지?
+Updating is optional. Major updates may have backward-incompatible changes, so you might want to consult the current @secref["version-notes"] before plunging in. The documentation for the newest version of Pollen is @link["http://pkg-build.racket-lang.org/doc/pollen/"]{available online} and refreshed daily. 
+
+}
+
+]
+item을 처음 시작할 때는 { 후에 바로 쓰는 반면, 끝날 때는 }와 ]를 한 줄씩 띈 후에 써준다. 이유가 뭘까. item 간 간격을 더 주려고 하는걸까?`
+
+@title[#:tag "quick-tour"]{Quick tour}
+
+중간에 들어가는 tag는 어떤 식으로 사용할 수 있는거지? 다른 곳에서 불러오려고 할 때 tag 이름으로 사용할 수 있는건가?
+
+@codeblock{
+#lang pollen
+}
+@terminal 태그와는 어떤 점이 다른 거지?
+
+@itemlist는 [] 안에 @item을 넣는 반면 @item은 {} 안에 내용을 넣는다. 그럼 @itemlist는 {}로는 따로 인자를 넣어주지 않는걸까? 왜 둘이 인자를 넣는 괄호 종류가 다른거지?
+@answer{[] 안의 문자는 text mode가 아니라 racket mode로 기능한다. @ 기호 뒤에 나오는 함수는 racket expression의 다른 모양이다.}
+
+@fileblock["hello.txt.pp" 
+@codeblock{
+#lang pollen
+Grand Illusion
+Pieces of Eight
+Paradise Theatre
+}]
+위에서 떠올렸던 의문이 여기서도 똑같이 든다. @fileblock은 [] 안에 내용을 넣고, 그 안의 @codeblock은 {} 안에 내용을 넣는다.
+
+@racket[define] 은 racket code를 짤 때의 사항들을 고려한 걸까? 다른 코드 관련 태그와 다른 점이 있나?
+
+title에는 따로 타이틀 번호가 들어가지 않고, section에는 따로 section 번호가 들어가지 않는데 scribble에서는 번호를 어떻게 붙이는 건지, 파일 순서가 따로 지정되어 있지 않은데 뭘로 파일 순서를 정하는 건지.
