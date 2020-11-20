@@ -7,9 +7,9 @@
 return statement, expression statement 이외 statement는 다음 세 가지로 나뉜다:
 
 @itemlist[
-@item{selection statements. @keyword{if}, @keyword{switch} statements로 여러 조건 중 하나를 골라 실행할 수 있다.}
-@item{iteration statements. @keyword{while}, @keyword{do}, 그리고 @keyword{for}로 여러 번 반복할 수 있다.}
-@item{jump statements. @keyword{break}, @keyword{continue}, 그리고 @keyword{goto}로 조건에 구애받지 않고 프로그램 안 어느 지점으로 건너뛸 수 있다. (@keyword{return} statement도 여기 속한다.)}
+		@item{selection statements. @keyword{if}, @keyword{switch} statements로 여러 조건 중 하나를 골라 실행할 수 있다.}
+		@item{iteration statements. @keyword{while}, @keyword{do}, 그리고 @keyword{for}로 여러 번 반복할 수 있다.}
+		@item{jump statements. @keyword{break}, @keyword{continue}, 그리고 @keyword{goto}로 조건에 구애받지 않고 프로그램 안 어느 지점으로 건너뛸 수 있다. (@keyword{return} statement도 여기 속한다.)}
 ]
 
 그 외 statement 여럿을 묶은 compound statement, 아무것도 하지 않는 null statement가 있다.
