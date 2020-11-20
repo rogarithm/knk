@@ -1,15 +1,15 @@
 #lang scribble/manual
 
-@(define k keyword)
+@(define kw keyword)
 
 @title{selection statements}
 
 return statement, expression statement 이외 statement는 다음 세 가지로 나뉜다:
 
 @itemlist[
-@item{selection statements. @keyword{if}, @keyword{switch} statements로 여러 조건 중 하나를 골라 실행할 수 있다.}
-@item{iteration statements. @keyword{while}, @keyword{do}, 그리고 @keyword{for}로 여러 번 반복할 수 있다.}
-@item{jump statements. @keyword{break}, @keyword{continue}, 그리고 @keyword{goto}로 조건에 구애받지 않고 프로그램 안 어느 지점으로 건너뛸 수 있다. (@keyword{return} statement도 여기 속한다.)}
+		@item{selection statements. @kw{if}, @kw{switch} statements로 여러 조건 중 하나를 골라 실행할 수 있다.}
+		@item{iteration statements. @kw{while}, @kw{do}, 그리고 @kw{for}로 여러 번 반복할 수 있다.}
+		@item{jump statements. @kw{break}, @kw{continue}, 그리고 @kw{goto}로 조건에 구애받지 않고 프로그램 안 어느 지점으로 건너뛸 수 있다. (@kw{return} statement도 여기 속한다.)}
 ]
 
 그 외 statement 여럿을 묶은 compound statement, 아무것도 하지 않는 null statement가 있다.
@@ -38,8 +38,51 @@ and, or, not의 기능을 하는 logical operators !, ||, &&. 0이나 1 둘 중 
 ! operator는 unary plus and minus operator과 같은 우선도를 갖고, &&와 || operator는 relational and equality operator보다 낮은 우선도를 갖는다. 여러 개 모여있을 경우 ! operator는 오른쪽 모임부터, &&와 ||operator는 왼쪽 모임부터 계산한다.
 
 
-@section{the @keyword{if} statement}
+@section{the @kw{if} statement}
 
-@k{if} statement는 프로그램이 expression value를 확인해서 두 선택지 중 하나를 고를 수 있도록 해준다. @code{if ( expression ) statement}
+@kw{if} statement는 프로그램이 expression value를 확인해서 두 선택지 중 하나를 고를 수 있도록 해준다. @code{if ( expression ) statement}
+
+@bold{Compound Statements}
+
+고른 선택지에 여러 개의 statement를 놓으려면 compound statements를 쓴다.
+
+@code{{ statements }}
+
+statements 맨 처음과 끝에 중괄호를 붙이면 여러 statement를 하나의 statement로 여기게 할 수 있다.
+
+@codeblock{
+{
+		line_num = 0;
+		page_num++;
+}
+}
+
+중괄호 안 statement 뒤에는 ;이 붙지만, 중괄호 뒤에는 ;이 붙지 않는다.
+
+@bold{The @kw{else} Clause}
+
+@kw{if} statement 뒤에 @kw{else} statement를 덧붙일 수 있다. @kw{if} statement의 expression 연산값이 0일 경우 @kw{else} 뒤 statement를 연산한다.
+
+@bold{Cascaded @kw{if} Statements}
+
+@codeblock{
+if (n < 0)
+		printf("blah blah\n");
+else
+		if (n == 0)
+				printf("clah clah\n");
+		else
+				printf("dlah dlah\n");
+}
+
+이렇게 쓸 수도 있지만, 보통은 다음과 같이 쓴다:
 
 
+@codeblock{
+if (n < 0)
+		printf("blah blah\n");
+else if (n == 0)
+		printf("clah clah\n");
+else
+		printf("dlah dlah\n");
+}
