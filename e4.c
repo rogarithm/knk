@@ -2,6 +2,7 @@
 
 int main(void)
 {
+		/*
 	printf("exercise 1\n");
 	int i;
 	int j;
@@ -99,9 +100,42 @@ int main(void)
 	i *= j *= k;
 	printf("(d): %d & %d & %d should be 0, 0, 0.\n", i, j, k);
 
-	printf("exercise 11\n");
-	printf("exercise 12\n");
-	printf("exercise 13\n");
-	printf("exercise 14\n");
-	printf("exercise 15\n");
+	printf("exercise 12. Show the output produced by each of the following program fragments. \n"
+					"Assume that i and j are int variables. \n");
+	i = 5;
+	j = ++i * 3 - 2;
+	printf("(a): %d %d should be 6 and 16\n", i, j);
+
+	i = 5;
+	j = 3 - 2 * i++;
+	printf("(b): %d %d should be 6 and -7\n", i, j);
+
+	i = 7;
+	j = 3 * i-- + 2;
+	printf("(c): %d %d should be 6 and 23\n", i, j);
+
+	i = 7;
+	j = 3 + --i * 2;
+	printf("(d): %d %d should be 6 and 15\n", i, j);
+*/
+	printf("exercise 13. Only one of the expressions ++i and i++ is exactly the same\n"
+					"as (i += 1); which is it? Justify your answer.\n");
+  // 이걸 테스트해볼 수 있나? 나중에 생각해보기
+
+	printf("exercise 14. Supply parentheses to show how a C compiler would interpret each of the following expressions.\n");
+
+	printf("(a): a * b - c * d + e would be (a * b) - (c * d) + e\n");
+	printf("(b): a / b % c / d would be ((a / b) % c) / d\n");
+	printf("(c): - a - b + c - + d would be ((((-a) - b) + c) - (+d))\n");
+	printf("(d): a * - b / c - d would be ((a * (-b)) / c) - d\n");
+
+	printf("exercise 15. Give the values of i and j after each of the following expression statements\n"
+					"has been executed. (Assume that i has the value 1 initially and j has the value 2.)\n");
+
+	printf("(a): i += j; then i would be 3, j would be 2.");
+	printf("(b): i--; then i would be 0, j would be 2.");
+	printf("(c): i * j / i; then i and j would be unchanged.");
+	printf("(d): i % ++j; then i would be 1, j would be 3.");
+
+	return (0);
 }
