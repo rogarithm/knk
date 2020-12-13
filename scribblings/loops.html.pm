@@ -1,7 +1,5 @@
 #lang pollen
 
-◊(define st statement)
-◊(define op operator)
 
 ◊title{loops}
 

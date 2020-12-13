@@ -1,9 +1,5 @@
 #lang pollen
 
-◊(define exp expression)
-◊(define op operator)
-◊(define var variable)
-◊(define val value)
 
 ◊title{◊|exp|s}
 
