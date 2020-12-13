@@ -1,6 +1,5 @@
 #lang pollen
 
-◊(define conv-spec "conversion specification")
 
 ◊title{formatted input/output}
 

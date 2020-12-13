@@ -5,6 +5,7 @@
 ◊(define var variable)
 ◊(define val value)
 ◊(define st statement)
+◊(define conv-spec "conversion specification")
 
 ◊(define quicktable ...)
 ◊(wishlist
