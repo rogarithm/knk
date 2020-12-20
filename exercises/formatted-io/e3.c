@@ -2,7 +2,9 @@
 
 int main(void)
 {
+		/*
 		printf("exercise 3. for each of the following pairs of scanf format strings, indicate whether or not the two strings are equivalent. If they're not, show how they can be distinguished.");
+		*/
 		//(a)
 		int a, b;
 		printf("enter integer: ");
@@ -14,35 +16,35 @@ int main(void)
 		printf("assigned value is %d\n", b);
 		
 		//(b)
-		int a, b, c;
-		printf("enter integer in this format 'a-b-c': ");
-		scanf("%d-%d-%d", &a, &b, &c);
-		printf("assigned value is %d & %d & %d each.\n", a, b, c);
+		int c, d, e;
+		printf("enter integer in this format 'c-d-e': ");
+		scanf("%d-%d-%d", &c, &d, &e);
+		printf("assigned value is %d & %d & %d each.\n", c, d, e);
 
-		a = 0; b = 0; c = 0; //initialize variables
+		int f = 0; int g = 0; int h = 0; //initialize variables
 		printf("enter integer like above, but white space before each elements: ");
-		scanf("%d -%d -%d", &a, &b, &c);
-		printf("assigned value is %d & %d & %d each.\n", a, b, c);
+		scanf("%d -%d -%d", &f, &g, &h);
+		printf("assigned value is %d & %d & %d each.\n", f, g, h);
 
 		float x;
 		printf("enter float number:");
 		scanf("%f", &x);
 		printf("assigned value is %f\n", x);
 		
-		x = 0;
+		float y = 0;
 		printf("enter float number plus white space:");
-		scanf("%f ", &x);
-		printf("assigned value is %f", x);
+		scanf("%f ", &y);
+		printf("assigned value is %f", y);
 
 		//(d)
-		float x, y, z, a;
+		float i, j, k, l;
 		printf("f,f\n");
-		scanf("%f,%f", &x, &y);
-		printf("%f, %f", x, y);
+		scanf("%f,%f", &i, &j);
+		printf("%f, %f", i, j);
 
 		printf("f, f\n");
-		scanf("%f, %f", &z, &a);
-		printf("%f, %f", z, a);
+		scanf("%f, %f", &k, &l);
+		printf("%f, %f", k, l);
 
 		return (0);
 }
