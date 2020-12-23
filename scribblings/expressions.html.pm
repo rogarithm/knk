@@ -16,10 +16,10 @@ This chapter covers C's most fundamental ◊|op|s: the arithmetic ◊|op|s, the 
 
 ◊quick-table{
 Unary	|	Binary	|
-		|	Additive	|	Multiplicative
+				|	Additive	|	Multiplicative
 + plus	|	+ add	|	* mult
 - minus	|	- sub	|	/ div
-		|	|	% remainder
+				|	|	% remainder
 }
 
 There's two kinds of ◊|op|: binary and unary. If an ◊|op| needs two operands, the ◊|op| is binary ◊|op|. But if an ◊|op| needs only one operand, the ◊|op| is unary ◊|op|.
