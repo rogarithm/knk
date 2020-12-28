@@ -1,19 +1,15 @@
 #include <stdio.h>
 
-void list_2_power(int num)
+int main(void)
 {
 		int i;
 
 		i = 1;
-		while (i <= num)
+		while (i <= 128)
 		{
 				printf("%d ", i);
 				i *= 2;
 		}
-}
-
-int main(void)
-{
-		list_2_power(128);
+		printf("\n");
 		return (0);
 }

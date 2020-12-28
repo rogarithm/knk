@@ -8,6 +8,7 @@ void list_2_power_for(int num)
 		{
 				printf("%d ", i);
 		}
+		printf("\n");
 }
 
 int main(void)

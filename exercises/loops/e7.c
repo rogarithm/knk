@@ -6,10 +6,11 @@ void div_until_zero(int num)
 		{
 				printf("%d ", num);
 		} 
+		printf("\n");
 }
 
 int main(void)
 {
-		div_until_zero(9348);
+		div_until_zero(9384);
 		return (0);
 }

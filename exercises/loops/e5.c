@@ -15,6 +15,8 @@ int main(void)
 		}
 		printf("\n");
 		printf("(b)----------------------\n");
+
+		i = 11;
 		for (; i < 10;)
 		{
 				printf("%d", i);
@@ -22,6 +24,8 @@ int main(void)
 		}
 		printf("\n");
 		printf("(c)----------------------\n");
+
+		i = 11;
 		do {
 				printf("%d", i);
 				i++;
