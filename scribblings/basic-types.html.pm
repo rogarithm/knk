@@ -54,24 +54,119 @@ type\notation | ◊?{int} | decimal | octal | hexadecimal
 
 ◊section{floating types}
 
-소수점 뒤 숫자가 있는 수, 아주 작거나 아주 큰 수가 필요할 때 floating type을 쓴다. float, double, long double 세 가지의 floating type이 있는데, 순서대로 갈수록 더 정확한 값을 담을 수 있다.
+When we need ◊|var|s to store numbers with decimal point, or exceedingly large or small, we can use floating types. C provides ◊t{float}, ◊t{double}, ◊t{long double}.
+
+Because different computers have different specifications, the precision of floating types varies. But most modern computers follow the specifications in IEEE Standard 754.
 
 ◊bold{Floating Constants}
 
-floating constant를 쓸 때, 소수점과 exponent 둘 중 적어도 하나는 꼭 넣어야 한다. exponent는 주어진 floating constant를 얻기 위해 10을 거듭제곱할 횟수를 말한다. 앞에는 e를 쓰고, 부호가 필요하다면 e와 횟수 사이에 쓴다.
+A floating constant needs a decimal point and/or an exponent; you can use either one of them, or use both. To use an exponent, append letter e before the exponent. ◊uc{The exponent describes the number to be used to scale with power of 10}.
+
+◊uc{By default, floating constants are stored in memory in the same format as a ◊t{double} ◊|var|. As constants are not "variable", we cannot say something like "a ◊var for floating constant". But a floating constant should be stored in a memory anyway.}
+
+If you want a floating constant to be stored in specific format, you can indicate the format by appending a proper letter at the end of the constant. For example, if you want ◊const{57.0} to be stored in a ◊uc{◊t}{long} format, write as ◊const{57.0L}.
 
 ◊bold{Reading and Writing Floating-Point Numbers}
 
-앞서 내용과 동일하게, double이나 long double type ◊|val|을 printf나 scanf 함수에서 쓰려면 그에 맞는 ◊|conv-spec|을 써주어야 한다. type, 함수, C compiler에 따라 조금씩 다를 수 있기 때문에 찾아보고 바꿔준다.
+%e, %f, and %g are the ◊|conv-spec|s for reading and writing single-precision floating-point numbers. ◊|val|s for ◊t{double} and ◊t{long double} needs differnet ◊|conv-spec|s.
+
+◊quick-table{
+type\◊conv-spec | | |
+◊t{float} | e | f | g
+◊t{double} | le | lf | lg
+◊t{long double} | Le | Lf | Lg
+}
+
+◊conv-spec for ◊t{double} should be used only in scanf function.
+
 
 ◊section{character types}
 
+The ◊|val|s of char type may vary on different machines.
+
 ◊bold{Operations on Characters}
 
-◊em{C에선 문자를 작은 정수로 본다.} 각각의 문자는 숫자 하나씩을 갖는다. 문자가 연산식 안에 나오면, C는 그 문자에 해당하는 정수값을 연산에 쓴다.
-
-문자 비교는 숫자를 비교할 때와 같다. 두 문자에 해당하는 정수값을 갖고 어떤 값이 더 크고 작은지를 본다.
+Each characters has the corresponding integer value. Therefore, if a ◊t{char} ◊|val| comes in an ◊|exp|, it'll be treated as an ◊t{int} ◊|val| assigned for the character. As I mentioned before, different machine may have different character set and ◊|val|s, so be careful to use ◊t{char} ◊|val|s in ◊|exp|s.
 
 ◊bold{Signed and Unsigned Characters}
 
+Like the integer types, ◊t{char} type could be signed and unsigned.
 
+◊later{integral types}
+
+◊bold{Arithmetic Types}
+
+◊later{◊hierarchy{arithmetic types}}
+
+◊bold{Escape Sequences}
+
+To write special (nonprinting) characters, we use the escape sequence. The sequence consists of character escapes and numeric escapes. We can use character escapes by appending \ in front of a proper character. But this (character) escapes are limited in its number of possibility.
+
+Numeric escapes can be a solution to this problem. They provide any character, thus not limited. We can use an octal escape sequence or a hexadecimal escape sequence by appending octal (or hexadecimal) number after "\".
+
+◊bold{Character-Handling Functions}
+
+The touper function in ◊header{ctype.h} can be used to convert a lower-case letter to upper-case.
+
+◊bold{Reading and Writing Characters using scanf and printf}
+
+To read and write a char type value, use %c ◊|conv-spec|.
+
+scanf를 쓸 때, 읽으려는 char 앞에 white-space가 있으면, char를 받는 변수 (&ch라고 하면 ch)에 char과 앞의 white-space까지 담는다. 이게 싫으면 %c 앞에 space를 준다. 그러면 ch에는 해당 char만 담긴다.
+
+◊bold{Reading and Writing Characters using ◊f{getchar} and ◊f{putchar}}
+
+◊f{putchar} writes a single character. Each time ◊f{getchar} is called, it reads one character.
+
+◊f{getchar} is used as an idiom where we need to skip a character such as blank.
+
+Because the way is different that ◊f{scanf} and ◊f{getchar} treat characters that they has "peeked" at but not read, be careful if you mix the two functions.
+
+◊later{idioms using ◊f{getchar}}
+
+
+◊section{type conversion}
+
+For arithmetic, computers are restrictive. We should give computers operands that have same size, same way of storing. Unlike computers, C is more opened for arithmetic. This language provides (implicit and explicit) ways to consult with situations where operands have different size, or stored in different way. These solutions let us to write more freely, because they'll convert our freely written operands to a proper specification for the computer.
+
+Conversions are implicit or explicit. When the compiler do this job, it's implicit. When we (programmer) do this job, it's explicit. Because C has many arithmetic types, there's many rules for the converting.
+
+In this section, we'll cover a part of whole situations. ◊reference{chapter 9} explain the rest.
+
+◊bold{The Usual Arithmetic Conversions}
+
+This conversion is applied for operands of most binary operators, including the arithmetic, relational, and equality operators. When the types of operands are not the same, the conversion happens. Operands are converted in a way that their precision mostly preserved. There's a danger when an operand's size is beyond its type's capacity, resulting to overflow, and then gives meaningless ◊|val|.
+
+The strategy that the compiler uses is ◊uc{to convert the "narrower" (that is, requires fewer bytes to store ◊uc{}) type to another operand's type}. This strategy is called promotion. Integral promotions which is one of the promotions, convert a ◊t{char} or ◊t{short} integer to ◊t{int} integer. 
+
+The rules for the usual arithmetic conversions are divided into two cases:
+
+- The type of at least one operand is a floating type
+
+convert a narrower operand to these type (bigger type first applied)
+
+long double > double > float
+
+- Neither operand type is a floating type
+
+same as above rule
+
+unsigned long int > long int > unsigned int > int
+
+for detail, read 144p.
+
+◊bold{Conversion During Assignment}
+
+◊bold{Implicit Conversions in C99}
+
+◊bold{Casting}
+
+
+◊section{type definitions}
+
+◊bold{Advantages of Type Definitions}
+
+◊bold{Type Definitions and Portability}
+
+
+◊section{the ◊op{sizeof} operator}
