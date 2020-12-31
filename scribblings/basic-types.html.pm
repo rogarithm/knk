@@ -157,16 +157,43 @@ for detail, read 144p.
 
 ◊bold{Conversion During Assignment}
 
-◊bold{Implicit Conversions in C99}
+The type of the ◊val that results from the ◊exp on the right side is converted to the type of ◊var on the left side. If the type of ◊var on the left is at least as wide as the ◊exp on the right, no problem. But if the type of ◊var on the left is narrower than the ◊exp on the right, there's a danger of lossing some information like precision.
+
+Because a floating-point constant ◊uc{have} ◊t{double} by default, assigning a floating-point constant to ◊t{float} ◊var may raise a warning, because converting ◊t{double} to ◊t{float} has danger that just have said right above. Thus, when we meet this situation, it's good to append the f suffix to a floating-point constant.
+
+◊later{◊bold{Implicit Conversions in C99}}
+
+for details, read 146-147p.
 
 ◊bold{Casting}
+
+If you want more control over type conversion than the control provided by implicit conversion, use casting.
+
+◊form{ ( type-name ) expression }
+
+You can specify the type name you want an expression's type to be converted.
+
+if casting expression is an operand of binary operation, the "casted" type will be affected by ◊ref{◊bold{The Usual Arithmetic Conversion}} rule. Operator precedence could twist your intention in an ◊|exp|, so be careful to get an intended result (as a solution, use parenthesis.)
 
 
 ◊section{type definitions}
 
+Creating another name for a built-in type could be helpful reading a source code, because we can add a meaning that is effective to understand intend of code.
+
+For example, writing ◊code{ typedef int Bool; } causes the compiler to use a new type "Bool" the same as ◊t{int}.
+
 ◊bold{Advantages of Type Definitions}
+
+Type definitions are good when we need to modify certain ◊|var|s' type. It's a way of simplifying modification process.
 
 ◊bold{Type Definitions and Portability}
 
+Though it's not a perfect solution, using type definitions can make porting job more easy.
 
 ◊section{the ◊op{sizeof} operator}
+
+sizeof operator let you know how much memory is required to store ◊|val|s of a particular ◊|t|.
+
+◊form{ sizeof ( type-name ) }
+
+The ◊uc{◊|op|'s ◊val} is an ◊t{unsigned int}. 
