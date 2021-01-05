@@ -88,6 +88,8 @@ Like nesting multiple if ◊|st|s, when it's confusing to distinguish the border
 
 ◊section{the switch ◊|st|}
 
+A constant expression is an expression that cannot have variables or function calls.
+
 
 ◊bold{The Role of the break ◊|st|}
 

@@ -49,7 +49,7 @@ The assignment statement ◊code{v = e} evaluate the ◊|exp|(could be a ◊|con
 
 Not alike other languages, in C, assignment is an ◊|op|, just like ◊op{+}. Evaluating the ◊|exp| ◊code{i = 0} produces the result (that is, ◊uncertain{returns} a ◊|val|) ◊val{0} and -as a side effect- assigns 0 to i. If it were other languages, they just assigns 0 to i as their main (not side) effect and ◊uncertain{cannot be used in an expression.}
 
-◊bold{L◊|val|s}
+◊bold{Lvalues}
 
 The assignment ◊|op| needs an l◊|val| as its left operand. The l◊|val| is ◊uncertain{an object stored in computer memory}, not a ◊|const| or a result of a computation. For candidates of operands (◊|var|s, ◊|const|s, and ◊|exp|s), only ◊|var|s are the only l◊|val|s for now. ◊?{Either ◊|var|s and ◊|const|s are ◊|exp|s. Is ◊|exp|s in this context not the same as ◊section{}?} 
 

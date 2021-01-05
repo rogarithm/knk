@@ -4,7 +4,8 @@
 ◊title{loops}
 
 
-◊section
+◊section{}
+
 ◊em{Loops are the same with iteration statements. That is, loop belongs to a statement.}. loop (or iteration) is a statement that iterates executing a loop body (which is also statement). Whether executing the loop body is determined by evaluating controlling expression. C's three loops have different timing to test controlling expression.
 
 ◊|st|{for loop} has a ◊|op|{comma operator}. 
@@ -84,7 +85,7 @@ C99에서 for statement의 exp에 declaration을 넣을 수 있다. 이 declarat
 expr1 , expr2
 }
 
-expr1을 연산하고 거기서 나온 값을 버린다. 그 다음 expr2를 연산하고 거기서 나온 값을 전체 expr의 값으로 한다. expr1은 side effect가 없으면 넣은 의미가 없다.
+expr1을 연산하고 거기서 나온 값을 버린다. 그 다음 expr2를 연산하고 거기서 나온 값을 전체 expr의 값으로 한다. expr1은 side effect가 없으면 넣는 의미가 없다.
 
 
 ◊section{exiting from a loop}
@@ -102,7 +103,7 @@ while (...) {
   }
 }
 }
-break statement는 자신을 감싸는 statement 밖으로 나간다. 그래서 이렇게 중첩되어 있을 때 break가 실행되면 switch statement만 빠져나가고 while statement 안에 있게 된다.
+break statement는 자신을 감싸는 statement 밖으로 나간다. 그래서 위와 같이  중첩되어 있을 때 break가 실행되면 switch statement만 빠져나가고 while statement 안에 있게 된다.
 
 ◊bold{the ◊|st|{continue} statement}
 
