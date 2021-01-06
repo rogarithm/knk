@@ -4,6 +4,6 @@ introducing-c.scrbl (◊todo{->html.pm})
 c-fundamentals.scrbl (◊todo{->html.pm})
 formatted-io.html.pm
 expressions.html.pm
-selection.scrbl
+selection.html.pm
 loops.html.pm
 

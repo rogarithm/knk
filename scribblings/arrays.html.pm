@@ -55,3 +55,33 @@ sizeof(a) / sizeof(a[0])
 Getting the length of arrays with this method eases maintining sources even when the ◊|val| of the array changes.
 
 If you use the length expressed by ◊op{sizeof}, you may incur a warning, because the ◊op{sizeof} has ◊t{size_t} type, unlike ordinary types like int. To remove the warning, casting the length's type to be the same as the type you want to compare (or want to use as an operand).
+
+◊section{multidimensional arrays}
+
+An array may have more than one dimension. We can declare 2 dimension array by writing like:
+
+◊code{ int m[5][9]; }
+
+we can think of this array that has 5 rows, 9 columns. It's comfortable to think like this, but actually it's stored as a one row in computer memory.
+
+◊bold{Initializing a Multidimensional Array}
+
+We can initialize a 2 dimensional array just like the way of initializing 2 dimensional array, but using initializers for 1 dimensional array as the element of initializer of 2 dimensional array:
+
+◊codeblock{
+int m[[3][4] = {{1, 1, 1, 1},
+								{0, 1, 1, 0},
+								{1, 0, 0, 0}}
+}
+
+Similar to rules for initializing 1 dimensional arrays, when we omit to initialize some rows, the omitted rows will be initialized to have zeros as its elements. When we didn't fill a row enough to match its row length, the unfilled elements will be initialized to be zero.
+
+◊bold{Constant Arrays}
+
+Any array can be declared with its type ◊t{const}, making the array to be constant. The constant array cannot be changed by the program. If we intend to use an array not modified during the execution of a program, declaring an array as ◊t{const} can be helpful.
+
+◊section{variable-length arrays (C99)}
+
+In C99, unlike C89, we can use a ◊var as an array's length. Arrays like this are called a variable-length array (or VLA for short). By using the VLA, we can use exact size of memory we need, because there's no case that we declare longer (or shorter) length of array we need.
+
+The length of a VLA can be a single ◊var or an arbitrarily ◊|exp|s (that contains ◊|op|s).

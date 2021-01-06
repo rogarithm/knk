@@ -42,7 +42,7 @@ When the operands are signed, the program's behavior is undefined, whereas when 
 
 ◊bold{Reading and Writing Integers}
 
-연산 결과가 integer overflow를 일으킨다면 그 operand ◊|t|을 바꿔야 한다. 이때 이들 operands가 printf나 scanf 등에서 쓰인다면, 바꾼 ◊|t|에 맞게 이들 함수 안 내용을 수정해줘야 한다. 필요한 ◊|conv-spec|을 알아보고 바꿔준다.
+If the result of operation raises integer overflow, the type of the operands must be modified to proper one. If the operands are used in printf or scanf function, the content of these functions should be modified to be matched with the modified type. Check the proper ◊|conv-spec|s that are required, and change them.
 
 ◊quick-table{
 type\notation | ◊?{int} | decimal | octal | hexadecimal
