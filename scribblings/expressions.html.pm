@@ -87,7 +87,7 @@ We can break any complicate ◊|exp|s into sub◊|exp|s by using the rules of �
 ◊uncertain{fetching a ◊|var|} means to retrieve the ◊|val| of the ◊|var| from memory.
 
 
-◊section{◊|exp| statements}
+◊section{expression statements}
 
 Any ◊|exp| can be turned into a statement by appending a semicolon.
 
