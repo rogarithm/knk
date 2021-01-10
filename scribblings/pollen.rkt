@@ -1,16 +1,27 @@
 #lang racket/base
+(require racket/list racket/string racket/match)
+(require pollen/decode pollen/tag pollen/file)
+
+(define exclusion-mark-attr '(decode "exclude"))
+(define (root . elems)
+	(decode `(decoded-root ,@elems)
+          #:txexpr-elements-proc detect-paragraphs 
+          #:string-proc (compose1 smart-quotes smart-dashes)
+          #:exclude-tags '(style script pre)
+          #:exclude-attrs (list exclusion-mark-attr)))
 
 (define wishlist '(bold uncertain itemlist item form role))
 
 ;----------------------------------------------------------
 ; abbreviations for words
 
-(define const constant)
-(define exp expression)
-(define op operator)
-(define var variable)
-(define val value)
-(define st statement)
+(define const "constant")
+(define exp "expression")
+(define op "operator")
+(define var "variable")
+(define val "value") ; don't use, as it takes more time to type it.
+; remove after editing all documents
+(define st "statement")
 (define conv-spec "conversion specification")
 
 
@@ -77,4 +88,5 @@
       "#"))
 
 
+; should be modified to find the section of document, not just find the title.
 (define xref (lambda (target) (xref (target->url target) target)))

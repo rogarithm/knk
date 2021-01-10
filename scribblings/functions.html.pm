@@ -4,7 +4,7 @@
 
 ◊section{}
 
-Unlike the definition of function in mathmetics, a function in C doesn't always have arguments, nor computes a value. Other languages call a function that doesn't compute a value as a procedure, but there's no distinction in C.
+Unlike the definition of function in mathmetics, some functions in C doesn't have arguments, some doesn't computes a value. Other languages call a function that doesn't compute a value as a procedure, but there's no distinction in C.
 
 ◊section{defining and calling functions}
 

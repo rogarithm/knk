@@ -1,9 +1,11 @@
 #lang pollen
 
-introducing-c.scrbl (◊todo{->html.pm})
-c-fundamentals.scrbl (◊todo{->html.pm})
+◊;introducing-c.scrbl (◊todo{->html.pm})
+◊;c-fundamentals.scrbl (◊todo{->html.pm})
 formatted-io.html.pm
 expressions.html.pm
 selection.html.pm
 loops.html.pm
-
+basic-types.html.pm
+arrays.html.pm
+functions.html.pm
