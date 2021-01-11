@@ -15,8 +15,8 @@
 ;----------------------------------------------------------
 ; abbreviations for words
 
-(define const "constant")
-(define exp "expression")
+(define const "constant") ; don't use. inefficient.
+(define expr "expression")
 (define op "operator")
 (define var "variable")
 (define val "value") ; don't use, as it takes more time to type it.
