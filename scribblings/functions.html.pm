@@ -110,7 +110,7 @@ Using the same name for ◊|var|s in multiple functions doesn't affect each othe
 
 ◊section{function declarations}
 
-It does not raise an error to put a function definition after another function or program that uses the definition of the function. But if you do, the compiler should anticipate what are return type and arguments' type for the function we defined. If there's no clue for that, the compiler determine ◊t{int} as default for these. If it does not match with the type of the function definition, we'll get an error.
+It does not raise an error to put a function definition after another function or program that uses the definition of the function. But if you do, the compiler should anticipate what are return type and arguments' type for the function we've defined. If there's no clue for that, the compiler determine ◊t{int} as default for these. If it does not match with the type of the function definition, we'll get an error.
 
 Putting a function definition before the program isn't a solution, because there are situations when we cannot put a definition before its use, especially when a function is recursive (like functions call each other in their body). So we need to declare (or make a prototype of) a function before calling it.
 
@@ -121,6 +121,8 @@ return-type function-name ( parameters );
 By declaring a function before calling the function enables the compiler to anticipate the function's return type and arguments' type.
 
 There's a convention about how to deal with parameter name of function prototype. If you need details, see 193p.
+
+◊?{Is is necessary to contain the input type for prototype, function declaration, and function definition?}
 
 ◊section{arguments}
 
@@ -149,6 +151,10 @@ It has both good side and bad side.
 ◊bold{Argument Conversions}
 
 For function calls in C, the arguments' type allowed to be different with the function's parameter type. For some cases, there's a rule for converting the arguments' type. But don't trust. There's a danger of error, so do explicitly clarify the arguments' type and do not let it be done automatically.
+
+If the compiler has seen the function's definition or prototype before the call, the compiler will implicitly convert the arguments' type into parameters' one.
+
+If the compiler hasn't seen the function's definition or prototype before the call, the compiler performs the default argument promotion. For details, see 194p.
 
 ◊bold{Array Arguments}
 
