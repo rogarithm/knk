@@ -33,9 +33,9 @@ e10
 
 e11
 
-N e12
+e12
 
-N e13
+e13
 
 e14 seems to work, but an error occurs (control may reach end of non-void function). Is this from difference btw return type of functions and printf's bool conv-spec in main function?
 

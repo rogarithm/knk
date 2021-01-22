@@ -17,9 +17,10 @@ p4.c
 
 same as p1.c
 
-N p5.c
+p5.c
 
-seems to be the same as p1 and p4, with different conditions.
+solved to solve p2 of functions.
+previously it seems to be the same as p1 and p4, with different conditions.
 
 p6.c
 
