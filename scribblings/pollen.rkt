@@ -10,7 +10,8 @@
           #:exclude-tags '(style script pre)
           #:exclude-attrs (list exclusion-mark-attr)))
 
-(define wishlist '(bold uncertain itemlist item form role))
+; abbreviate ◊uncertain with ◊uc
+(define wishlist '(bold uc itemlist item form role))
 
 ;----------------------------------------------------------
 ; abbreviations for words
@@ -40,6 +41,14 @@
 (define (codeblock . elems)
   `(pre [[class "code"]] ,@elems))
 
+(define (type . elems)
+	...)
+
+(define (uc . elems)
+	...)
+
+(define (bold . elems)
+	...)
 
 ;----------------------------------------------------------
 
