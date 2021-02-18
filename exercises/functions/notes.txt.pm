@@ -6,15 +6,11 @@ e2 ◊? of ◊section{function declarations}
 
 e3
 
-? e4
+e4
 
-- refine tests to include each conditions
-- don't know why this error occurs:
-◊${
-e4.c:18:60: warning: expression result unused [-Wunused-value]
-return DAY_TO_JULY + leap_day(year) + (30 * (month - 7)) + (((month - 7 + 1) / 2) * 1);
-}
-- need to consider the different day number order from August.
+- refined tests for wrong test cases. todo: include each conditions
+- trail unnecessary codes
+- make code more readable
 
 e5
 
