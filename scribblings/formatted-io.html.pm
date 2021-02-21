@@ -3,11 +3,11 @@
 
 ◊title{formatted input/output}
 
-formatted reading과 writing을 위한 scanf, printf 함수를 다룬다.
+About scanf, printf function for formatted reading and writing, respectively.
 
 ◊section{The printf function}
 
-문자열을 출력한다. 이 안에 값을 넣을 수도 있다. 값은 constants, ◊|var|s, more complicated ◊|expr|s 를 집어넣을 수 있고, 갯수에 제한은 없다.
+Prints string and/or values. Values can be constants, variables, or more complicated ◊|expr|s, and there's no restriction on the number.
 
 ◊form{
   printf ( string, ◊|expr|1, ◊|expr|2, ... );
@@ -25,13 +25,13 @@ formatted reading과 writing을 위한 scanf, printf 함수를 다룬다.
 	printf("the value of i is %d. whereas the value of x is %f.", i, x);
 }
 
-int type 값은 %d, float type 값은 %f를 각각 ◊|conv-spec|으로 쓴다. ◊check-this{또 문자열 뒤에 나오는 ◊|expr|은 다른 문자를 붙이지 않고 그 이름 그대로를 쓴다}.
+int type 값은 %d, float type 값은 %f를 각각 ◊|conv-spec|으로 쓴다. ◊check-this{또 ◊uc{문자열 뒤에 나오는 ◊|expr|}은 다른 문자를 붙이지 않고 그 이름 그대로를 쓴다}.
 
 ◊bold{Conversion Specifications}
 
 ◊|conv-spec|s는 우리가 출력값을 일정한 기준을 갖고 바꿔서 출력할 수 있도록 해준다. 예를 들어 %.1f는 float 값을 보여줄 때 소수점 뒤 부분은 첫번째 자리만 보이도록 한다. 
 
-◊|conv-spec|은 %m.pX이나 %-m.pX 모양이다.
+◊|conv-spec| can be either %m.pX or %-m.pX.
 
 m, p are ◊uc{integer constant}, X is a ◊uc{letter}.
 
@@ -41,7 +41,7 @@ m (또는 minimum field width)은 출력할 최소한의 문자 갯수를 정한
 
 ◊code{.} 뒤에 나오는 p(precision)은 X(◊|conv-spec|)에 따라 뜻이 달라진다:
 
-◊itemlist[
+◊list{
 ◊item{d는 정수를 10진법으로 나타낸다. 이때 p는 출력할 최소한의 문자 갯수다. p가 출력할 숫자 자릿수보다 크면 앞을 0으로 채우고, p가 없으면 1로 생각한다.}
 
 ◊item{e는 floating-point 수를 지수 형식으로 나타낸다. 이때 p는 소수점 뒤에 나올 숫자 갯수다. 기본값은 6이고, 0일 경우 소수점은 출력 안된다.}
@@ -49,8 +49,8 @@ m (또는 minimum field width)은 출력할 최소한의 문자 갯수를 정한
 ◊item{f는 floating-point 수를 "fixed-decimal" 형식으로 나타낸다. 그외는 e와 같다.}
 
 ◊item{g는 floating-point 수를 지수나 고정 소수점 형식으로 나타낸다. 그리고 (컴파일러 기준) 적당한 곳에서 어떤 형식으로 출력할지를 정한다. p는 출력할 ◊uc{유효 숫자}의 최대 갯수다. f와는 달리 0으로 메꾸는 건 하지 않고, 소수점 뒤 숫자가 없을 경우 소수점을 표시하지 않는다.}
+}
 
-]
 
 ◊bold{Escape Sequences}
 
@@ -69,13 +69,13 @@ format string 안에서 \ 로 시작하는 문자는 보통이라면 컴파일�
 
 scanf 함수에서 format string은 ◊|conv-spec|만 쓰는 경우가 대부분이다. ◊|conv-spec|끼리 서로 붙여서 쓰더라도 사용자가 입력할 때 값 사이에 주는 공간 크기와 관계 없이 각 값을 입력받기 때문이다. 오히려 일반 문자를 쓰면 사용자가 입력할 때 그 형식을 그대로 지켜서 매번 입력해야 하기 때문에 ◊|conv-spec|만 쓰는 게 낫다.
 
-◊|conv-spec| 갯수와 입력 ◊|var| 갯수를 맞춰줘야 한다. 또한 scanf 함수를 쓸 때 ◊|expr|은 앞에 &를 써줘야 한다. 안그러면 알 수 없는 값이 들어가버린다.
+◊|conv-spec| 갯수와 입력 variable 갯수를 맞춰줘야 한다. 또한 scanf 함수를 쓸 때 ◊|expr|은 앞에 &를 써줘야 한다. 안그러면 알 수 없는 값이 들어가버린다.
 
 scanf가 데이터를 읽는 방식은 그렇게 좋은 방식이 아니다. C 프로그래머 다수는 char type으로 데이터를 읽어서 나중에 numeric 형식으로 바꾼다. 이 책은 앞부분에서 scanf를 써서 데이터를 읽는데, 단순하기 때문이다. 나중엔 다른 방법을 쓴다.
 
 ◊bold{How scanf works}
 
-scanf는 일종의 pattern matching 함수로 볼 수 있다. 입력된 데이터를 ◊|conv-spec|에 맞춰 덩어리짓는 함수 말이다. 입력된 문자를 하나하나 읽으면서 그 순서에 나오기로 정해진 type에 나올 수 없는 문자가 나오면 멈추고 그때까지의 문자를 덩어리지어 ◊|var|에 넣는다. 그리고 모든 ◊|var|이 다 값을 가질 때까지 반복한다. 숫자 첫 자리 전까지 나오는 white space char는 무시한다. 다시 말해 데이터를 입력할 때 각 데이터 덩어리를 (숫자를) 어떻게 구분하든지 상관없다는 것이다.
+scanf는 일종의 pattern matching 함수로 볼 수 있다. 입력된 데이터를 ◊|conv-spec|에 맞춰 덩어리짓는 함수 말이다. 입력된 문자를 하나하나 읽으면서 그 순서에 나오기로 정해진 type에 나올 수 없는 문자가 나오면 멈추고 그때까지의 문자를 덩어리지어 variable에 넣는다. 그리고 모든 variable이 다 값을 가질 때까지 반복한다. 숫자 첫 자리 전까지 나오는 white space char는 무시한다. 다시 말해 데이터를 입력할 때 각 데이터 덩어리를 (숫자를) 어떻게 구분하든지 상관없다는 것이다.
 
 ◊bold{Ordinary characters in format strings}
 
