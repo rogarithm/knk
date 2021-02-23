@@ -3,23 +3,23 @@
 int main(void)
 {
 		int item_number;
-		float unit_price;
-		int year;
-		int month;
-		int day;
-
 		printf("Enter item number: ");
 		scanf("%d", &item_number);
-		// printf("\n");
+
+		float unit_price;
 		printf("Enter unit price: ");
 		scanf("%f", &unit_price);
+
+		int year, month, day;
 		printf("Enter purchase date (mm/dd/yyyy): ");
-		scanf("%d/%d/%d", &month, &day, &year);
-		// printf("\n");
+		scanf("%d / %d / %d", &month, &day, &year);
 
 		printf("Item\t\tUnit\t\tPurchase");
-		printf("\t\t\tPrice\t\tDate");
-		printf("%d\t$%f\t%d/%d/%d", item_number, unit_price, month, day, year);
+		printf("\n");
+		printf("\t\tPrice\t\tDate");
+		printf("\n");
+		printf("%-d \t\t $%.2f \t %.2d/%.2d/%.4d", item_number, unit_price, month, day, year);
+		printf("\n");
 
 		return 0;
 }

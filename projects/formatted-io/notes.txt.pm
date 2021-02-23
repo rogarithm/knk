@@ -1,17 +1,21 @@
 #lang pollen
 
 p1.c
-edit source code to add leading 0 when a ◊var{year} or ◊var{day} is between 1 to 9. check out ◊|conv-spec| for ◊f{printf} and ◊f{scanf}.
+edit source code to add leading 0 when a ◊var{year} or ◊var{day} is between 1 to 9. -> For decimal numbers, p of %m.pX means the minimal number to be represented. If a number of given value is lesser than p, fill the rest with 0. 
+
+◊uc{check out ◊|conv-spec| for ◊f{printf} and ◊f{scanf}.} Did I misunderstand these terms back then?
 
 p2.c
-also needs an answer of p1.c. check out how to insert tab in ◊f{printf}, and readability of last statement.
-
-for now details of ◊f{printf} and ◊f{scanf} seems not that important. solve these (and search for p1.c, p2.c also) when you need it.
+refine. the problem is the last line. How to insert a "space" in the string?
 
 p3.c
+how to verify this program can deal with all possible ISBN cases?
 
 p4.c
+done.
 
-p5.c
+N p5.c
+later.
 
-p6.c
+N p6.c
+later.

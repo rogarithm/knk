@@ -10,7 +10,6 @@ int main(void)
 		printf("\n");
 		printf("\n");
 		//(a)
-		/*
 		int a, b;
 		printf("enter integer: ");
 		scanf("%d", &a);
@@ -41,7 +40,6 @@ int main(void)
 		printf("enter float number plus white space: ");
 		scanf("%f ", &y);
 		printf("assigned value is '%f'\n", y);
-		*/
 
 		//(d)
 		float i, j, k, l;

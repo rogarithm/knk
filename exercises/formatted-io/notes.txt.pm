@@ -29,4 +29,4 @@ e5.c
 *
 
 e6.c
-related with the result of e3.c
+From the test result of e3.c (a), "%d" vs. " %d" is equivalent. So '%d/%d' is equivalent to '%d / %d'.

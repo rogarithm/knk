@@ -3,6 +3,7 @@
 int main(void)
 {
 	printf("exercise 9. show the output produced by each of the following program fragments.\n");
+	int i, j, k;
 
 	i = 7; j = 8;
 	i *= j + 1;
