@@ -9,5 +9,5 @@ int main(void)
 	printf("(c): - a - b + c - + d would be ((((-a) - b) + c) - (+d))\n");
 	printf("(d): a * - b / c - d would be ((a * (-b)) / c) - d\n");
 
-	return (0);
+	return 0;
 }

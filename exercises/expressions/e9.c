@@ -7,7 +7,7 @@ int main(void)
 
 	i = 7; j = 8;
 	i *= j + 1;
-	printf("(a): %d & %d should be 57 & 8 each.\n", i, j);
+	printf("(a): %d & %d should be 63 & 8 each.\n", i, j);
 	
 	i = j = k = 1;
 	i += j += k;
@@ -15,7 +15,7 @@ int main(void)
 
 	i = 1; j = 2; k = 3;
 	i -= j -= k;
-	printf("(c): %d & %d & %d should be 0, -1, 3.\n", i, j, k);
+	printf("(c): %d & %d & %d should be 2, -1, 3.\n", i, j, k);
 
 	i = 2; j = 1; k = 0;
 	i *= j *= k;
