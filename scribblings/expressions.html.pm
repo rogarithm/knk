@@ -5,7 +5,7 @@
 
 ◊section{}
 
-◊|expr|s are formulas that show how to compute a value. ◊|var|s and ◊|const|s are ◊|expr|s. A ◊|var| is a value to be used to compute while program is running; a ◊|const| is a value that doesn't change. These simple form of ◊|expr|s build more complicated ◊|expr|s when combined with ◊|op|s, by playing a role of operands.
+◊|expr|s are formulas that show how to compute a value. ◊|var|s and constants are ◊|expr|s. A ◊|var| is a value to be used to compute while program is running; a constant is a value that doesn't change. These simple form of ◊|expr|s build more complicated ◊|expr|s when combined with ◊|op|s, by playing a role of operands.
 
 ◊|op|s are used to make complicated ◊|expr|s (and these will compute a value eventually.) Get familiar with ◊|op|s is important in programming C.
 
@@ -45,13 +45,15 @@ If you want to use the value of computation result of an ◊|expr|, you need to 
 
 ◊bold{Simple Assignment}
 
-The assignment statement (as an example) ◊code{v = e} evaluate the ◊|expr|(could be a ◊|const|, a ◊|var|, or a more complicated ◊|expr|) ◊code{e} and copy its value into ◊code{v}.
+The assignment statement (as an example) ◊code{v = e} evaluate the ◊|expr|(could be a constant, a ◊|var|, or a more complicated ◊|expr|) ◊code{e} and copy its value into ◊code{v}.
 
-Not alike other languages, in C, assignment is an ◊|op|, just like ◊op{+}. Evaluating the ◊|expr| ◊code{i = 0} produces the result (that is, ◊uc{returns} a value) ◊code{0} and -as a side effect- assigns ◊code{0} to ◊code{i}. If it were other languages, they just assigns 0 to i as their main (not side) effect and ◊uc{cannot be used in an expression.}
+Unlike other languages, in C, assignment is an ◊|op|, just like ◊op{+}. Evaluating the ◊|expr| ◊code{i = 0} produces the result (that is, ◊uc{returns} a value) ◊code{0} and ,as a side effect, assigns ◊code{0} to ◊code{i}. If it were other languages, they just assigns 0 to i as their main (not side) effect and ◊uc{cannot be used in an expression.}
 
 ◊bold{Lvalues}
 
-The assignment ◊|op| needs an lvalue as its left operand. The lvalue is ◊uc{an ◊uc{object} stored in computer memory}, not a ◊|const| or a result of a computation. For candidates of operands (◊|var|s, ◊|const|s, and ◊|expr|s), only ◊|var|s are the only lvalues for now. ◊uc{Either ◊|var|s and ◊|const|s are ◊|expr|s. Are the ◊|expr|s not the same as the ◊|expr|s described in ◊section{}?} 
+The assignment ◊|op| needs an lvalue as its left operand. The lvalue is ◊uc{an ◊uc{object} stored in computer memory}, ◊strong{not a constant or a result of a computation}. From the condition, because we can't use a constant, and we can't use an expression as it's a ◊uc{result of a computation}, among andidates of operands (◊|var|s, constants, and ◊|expr|s), only ◊|var| is the only element that can be lvalues for now.
+
+◊uc{From 60p of the book (85p in pdf), ◊code{-i = j;} is said to be wrong. But as mentioned above, -i is a variable. Then why it's wrong?}
 
 ◊bold{Compound assignment}
 
