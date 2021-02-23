@@ -15,11 +15,11 @@ This chapter covers C's most fundamental ◊|op|s: the arithmetic ◊|op|s, the 
 ◊section{arithmetic ◊|op|s}
 
 ◊quick-table{
-Unary | Binary | 
- | Additive | Multiplicative
-+ plus | + add | * mult
-- minus | - sub | / div
- | | % remainder
+ Unary  | Binary   | 
+        | Additive | Multiplicative
++ plus  | + add    | * mult
+- minus | - sub    | / div
+        |          | % remainder
 }
 
 There's two kinds of ◊|op|: binary and unary. If an ◊|op| needs two operands, the ◊|op| is binary ◊|op|. But if an ◊|op| needs only one operand, the ◊|op| is unary ◊|op|.
@@ -81,6 +81,19 @@ Yet another is by ◊code{++}, ◊code{--} ◊|op|s. These can be used as prefix
 If it's hard to understand when multiple ◊|op|s like these come, modify them as separate assignment statements.
 
 ◊section{expression evaluation}
+
+◊quick-table{
+precedence | name | symbol(s) | associativity
+1 | increment (postfix) | ++               | left
+  | decrement (postfix) | --               |
+2 | increment (prefix)  | ++               | right
+  | decrement (prefix)  | --               |
+  | unary plus          | +                |
+  | unary minus         | -                |
+3 | multiplicative      | * / %            | left
+4 | additive            | + -              | left
+5 | assignment          | = *= /= %= += -= | right
+}
 
 ◊bold{Order of Subexpression Evaluation}
 
