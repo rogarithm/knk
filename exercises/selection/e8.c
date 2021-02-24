@@ -1,34 +1,29 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main(void)
 {
-		int teenager;
-		int age;
-		int true;
-		int false;
+	int teenager, age;
 
-		true = 1;
-		false = 0;
-		age = 0;
-		if ((13 <= age) && (age <= 19))
-				teenager = true;
-		else
-				teenager = false;
-		printf("I'm not teenager yet(%d), i'm %d years old\n", teenager, age);
+	teenager = 13 <= age && age <= 19 ? true : false;
 
-		age = 15;
-		if ((13 <= age) && (age <= 19))
-				teenager = true;
-		else
-				teenager = false;
-		printf("I'm teenager(%d), i'm %d years old\n", teenager, age);
+	age = 1;
+	printf("age is 1: %d", teenager = 13 <= age && age <= 19 ? true : false);
+	printf("\n");
+	printf("ans: false");
+	printf("\n");
 
-		age = 30;
-		if ((13 <= age) && (age <= 19))
-				teenager = true;
-		else
-				teenager = false;
-		printf("I'm not teenager anymore(%d), i'm %d years old\n", teenager, age);
+	age = 15;
+	printf("age is 15: %d", teenager = 13 <= age && age <= 19 ? true : false);
+	printf("\n");
+	printf("ans: true");
+	printf("\n");
 
-		return (0);
+	age = 20;
+	printf("age is 20: %d", teenager = 13 <= age && age <= 19 ? true : false);
+	printf("\n");
+	printf("ans: false");
+	printf("\n");
+
+	return 0;
 }

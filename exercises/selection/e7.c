@@ -5,10 +5,16 @@ int main(void)
 		int i;
 
 		i = 17;
-		printf("%d should be 17\n", (i >= 0 ? i : -i));
+		printf("i=17: %d", (i >= 0 ? i : -i));
+		printf("\n");
+		printf("ans:  17");
+		printf("\n");
 
 		i = -17;
-		printf("and %d should be 17 when i is -17.\n\n", (i >= 0 ? i : -i));
+		printf("i=-17: %d", (i >= 0 ? i : -i));
+		printf("\n");
+		printf("ans:  17");
+		printf("\n");
 
-		return (0);
+		return 0;
 }
