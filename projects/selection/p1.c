@@ -1,25 +1,33 @@
 #include <stdio.h>
 
-void n_digits(int n)
+int num_count(int num)
 {
-		if ((0 <= n) && (n <= 9))
-				printf("The number %d has 1 digit\n", n);
-		if ((10 <= n) && (n <= 99))
-				printf("The number %d has 2 digit\n", n);
-		if ((100 <= n) && (n <= 999))
-				printf("The number %d has 3 digit\n", n);
-		if ((1000 <= n) && (n <= 9999))
-				printf("The number %d has 4 digit\n", n);
-		return ;
+	int n_digits;
+
+	if ((0 <= num) && (num <= 9))
+		n_digits = 1;
+	if ((10 <= num) && (num <= 99))
+		n_digits = 2;
+	if ((100 <= num) && (num <= 999))
+		n_digits = 3;
+	if ((1000 <= num) && (num <= 9999))
+		n_digits = 4;
+
+	return n_digits;
 }
 
 int main(void)
 {
-		int test_n;
+	int num;
 
-		printf("Enter a number: ");
-		scanf("%d", &test_n);
-		n_digits(test_n);
+	printf("Enter a number: ");
+	scanf("%d", &num);
 
-		return 0;
+	if (num_count(num) == 1)
+		printf("The number %d has 1 digit", num);
+	else
+		printf("The number %d has %d digit", num, num_count(num));
+	printf("\n");
+
+	return 0;
 }

@@ -1,31 +1,38 @@
 #include <stdio.h>
 
-void conv_24_to_12(int h, int m)
+int conv_to_12(int h)
 {
-		if (h == 0)
-				printf("Equivalent 12-hour time: %d:%d AM\n", h + 12, m);
-		if ((0 < h) && (h < 11))
-				printf("Equivalent 12-hour time: %d:%d AM\n", h, m);
-		if (h == 12)
-				printf("Equivalent 12-hour time: %d:%d PM\n", h, m);
-		if ((12 < h) && (h < 23))
-				printf("Equivalent 12-hour time: %d:%d PM\n", h - 12, m);
-		if ((h == 24) && (m == 00))
-				printf("Equivalent 12-hour time: %d:%d AM\n", h - 12, m);
-		//else
-		//		printf("It's not a valid input\n");
+	// for AM
+	if ((0 < h) && (h < 11))
+		h = h;
+	if (h == 0)
+		h = h + 12;
+	if (h == 24)
+		h = h - 12;
+
+	// for PM
+	if (h == 12)
+		h = h;
+	if ((12 < h) && (h < 23))
+		h = h - 12;
+
+	return h;
 }
 
 int main(void)
 {
-		int test_h;
-		int test_m;
+	int hour;
+	int min;
 
-		printf("Enter a 24-hour time: ");
-		scanf("%d:%d", &test_h, &test_m);
-		conv_24_to_12(test_h, test_m);
+	printf("Enter a 24-hour time: ");
+	scanf("%d:%d", &hour, &min);
 
-		return 0;
+	if (((0 <= hour) && (hour < 11)) || ((hour == 24) && (min == 00)))
+		printf("Equivalent 12-hour time: %d:%.2d AM", conv_to_12(hour), min);
+	if ((12 <= hour) && (hour < 23))
+		printf("Equivalent 12-hour time: %d:%.2d PM", conv_to_12(hour), min);
+
+	printf("\n");
+
+	return 0;
 }
-
-
