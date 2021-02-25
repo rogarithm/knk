@@ -30,22 +30,29 @@ add check-digit as additional input, compare with computed check-digit. If the t
 
 p7
 
-◊start-here{temp.c}
-
 Though I made a logic I think correct, as the author said only four if statements are sufficient, refactoring required.
 
-works fine with the test case in the problem (21 43 10 35). Should I validate with another data set?
+◊topic{how to make tests?
 
-My solution doesn't consider when any of two elements have the same value. Update when needed.
+The amount of difference doesn't matter.
 
-N p8
+so I choose the default as 1 2 3 4
 
-N p9
+case 1: when every numbers are different, like 1 2 3 4. They are all different from each other.
+
+ - is the order of the numbers affect the result?
+ if it does, say, 1 2 3 4 and 1 3 2 4 would be different. The problem is, does it can be generalized? I mean, does it can be applied to every possibility?
+
+case 2: when some numbers are the same
+
+ - like 1 2 2 3.
+refined, but how to be sure it always works? Test?
+}
+
+p8 ok. But using two expressions with relational operator is cumbersome. Is there a way to simplify this?
+
+p9 ok.
  
-N p10
- 
-the answer should be written using switch ◊|st|.
+N p10 the answer should be written using switch statement.
 
-N p11
-
-same as p10
+N p11 same as p10
