@@ -132,9 +132,15 @@ The location where ◊c{break} and ◊c{continue} statement goes is pre-determin
 
 ◊section{the null statement}
 
-A statement can be null. It only has the semicolon at the end. It's useful when a loop body doesn't have any content like this:
+A statement can be null. It only has the semicolon at the end. It's useful when a loop body doesn't have any content like the code:
 
 ◊codeblock{
 for (d = 2; d < n && n % d != 0; d++)
   /* empty loop body */ ;
 }
+
+◊later{If you need, describe steps of controlling expression (the second one) in the code above}
+
+Though a null statement (semicolon) can be placed with, say, controlling expression of a loop, it's easy to be confused that other statements are the body of the loop. For the reason, it's customarily to put the null statement on a line by itself.
+
+Some loop statements can be converted using null statement, but it doesn't buy much. It's concise, but usually more complex to understand. But there're some cases when it's useful like reading character data.
