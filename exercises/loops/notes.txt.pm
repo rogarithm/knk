@@ -46,7 +46,7 @@ e7 same as e2
 
 N e10 ◊st{continue} and ◊st{goto} seems not important to me for now. solve when these statements are needed
 
-e11 document ◊st{continue} to solve this problem.
+e11 ok, but how to be sure if it's more efficient than the original?
 
 N e12
 
