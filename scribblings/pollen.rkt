@@ -35,7 +35,7 @@
 (define (section . elems)
   `('h2 ,@elems))
 
-(define (code . elems)
+(define (c . elems) ; change ◊code into ◊c
   `(span [[class "code"]] ,@elems))
 
 (define (codeblock . elems)
