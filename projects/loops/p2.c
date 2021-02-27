@@ -2,31 +2,32 @@
 
 int main(void)
 {
-		int m;
-		int n;
-		int temp;
-		int ans;
+	int m, n;
 
-		printf("Enter two integers: ");
-		scanf("%d %d", &m, &n);
-		if (m >= n)
-				;
-		if (m < n)
-		{
-				temp = m;
-				m = n;
-				n = temp;
-		}
-		while (n != 0)
-		{
-				temp = m % n;
-				m = n;
-				n = temp;
-		}
-		ans = m;
+	printf("Enter two integers: ");
+	scanf("%d %d", &m, &n);
 
-		printf("Greatest common divisor: %d", ans);
-		printf("\n");
+	if (m < n) // format arguments so that larger one comes first
+	{
+		int swap;
 
-		return 0;
+		swap = m;
+		m = n;
+		n = swap;
+	}
+
+	while (n != 0)
+	{
+		int mod;
+
+		mod = m % n;
+		m = n;
+		n = mod;
+	}
+
+
+	printf("Greatest common divisor: %d", m);
+	printf("\n");
+
+	return 0;
 }
