@@ -34,4 +34,6 @@ p7 ok. in expr3 of for loop, is the order need to be changed, or increment type 
 
 p8 ok.
 
-N p9 - p12
+p9 By simplifying equation for new loan, found that there's no need for local variable. Instead, use only loan.
+
+N p10 - p12

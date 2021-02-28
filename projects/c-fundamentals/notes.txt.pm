@@ -15,5 +15,7 @@ same as p5.c
 p7.c
 seems difficult.
 
-p8.c
-which is first? decreased by payment? or increased by the balance?
+p8.c refine code:
+
+ - no need to use conversion specification in scanf
+ - the concept used in the project isn't clear. Made it working, but maybe capability to refine more.
