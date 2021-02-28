@@ -1,5 +1,7 @@
 it should be int
 
+int / int + char -> int + char -(by the usual arithmetic conversions)> int
+
 /* useless
 // type of ◊exp{i / j + 'a'} when ◊var{i} and ◊var{j} has type int?
 #include <stdio.h>

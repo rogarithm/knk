@@ -2,9 +2,7 @@ int i;
 float f;
 double d;
 
-i * f / d
+i * f / d associativity is left.
 
-f / d -> double
-i * ... -> double
-
-thus, whole ◊exp will be converted to double.
+i * f -> float
+(i * f) / d -> double

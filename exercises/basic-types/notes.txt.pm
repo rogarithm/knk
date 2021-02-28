@@ -1,53 +1,37 @@
 #lang pollen
 
-e1.c
+e1 ok.
 
-Is there a method to print the ◊val of integer constant in decimal form?
+◊?{Is there a method to print the ◊val of integer constant in decimal form?
 
-e2.c
+From the description of integer constant, it can't be written or read. Then what it's for? And how can their value be checked?}
 
-Can underbar be an element of a constant?
+e2 ok.
 
-e3.c
+e3 ok.
 
-In (a), (d), is the order of pieces matter? No.
+e4 ok. If c is a string type variable, could printf(c) be legal?
 
-e4.c
+e5 ok.
 
-(d) is illegal.
+e6 ok. char code ranges from 0 to 127. for short, int, long, their size isn't constant. I followed the specification for 32 bit.
 
-e5.c
+N e7 simple number conversion problem.
 
-integer constant that starts with 0b?
+N e8 same as e7
 
-e6.c
+e9 by using the usual arithmetic conversion
 
-char code ranges from 0 to 127. for short, int, long, their size isn't constant. I followed specification for 32 bit.
+? e10 ok. ◊uc{the long type affects after this procedure?}
 
-N e7.c
+e11 ok. recheck associativity. answer was right, its process was wrong.
 
-simple number conversion problem.
+e12 ok.
 
-N e8.c
+N e13
 
-same as e7.c
+N e14
 
-e9.c
-
-the usual arithmetic conversion
-
-? e10.c
-
-For casted ◊|var|, is the original type affects the usual arithmetic conversion?
-
-e11.c
-
-e12.c
-
-N e13.c
-
-N e14.c
-
-e15.c
+e15 ok.
 
 From 151p, bit-number based type. Do I need to declare <stdint.h> to use the types?

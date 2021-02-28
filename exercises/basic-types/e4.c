@@ -1,7 +1,21 @@
-i += c; legal as i has type int, and c has type char which can be interpreted as int
+which one of the following statements is illegal
 
-c = 2 * c - 1; legal. same as (a)
+{
+char c;
 
-putchar(c); putchar consumes char type ◊val as an input. as c has char type, legal.
+(a) i += c; i has type int
 
-printf(c); illegal. if you want to put a ◊var into printf, you should use ◊conv-spec for that ◊var.
+ legal. For assignment ◊uc{statement}, convert to the type of expression on the left.
+
+(b) c = 2 * c - 1;
+
+ legal.
+
+(c) putchar(c);
+
+ putchar consumes char type variable as an input. legal.
+
+(d) printf(c);
+
+ illegal. if you want to put a variable into printf, you should use a proper conversion specification for that variable. ◊uc{maybe if c is a string type variable, it could be legal}.
+}

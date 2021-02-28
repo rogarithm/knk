@@ -1,4 +1,9 @@
-int, long, unsigned int. there's no floating-point type. apply ◊bold{the usual arithmetic conversions}.
+what's the type of i + (int) j * k
 
-(int) j * k: compute as ◊t{int} * ◊t{unsigned int}. the result (name it JK) ◊val will have ◊t{unsigned int}. as ◊t{int} is narrower than ◊t{unsigned int}.
-i + JK: compute as ◊t{int} * ◊t{unsigned int}. the result ◊val will have ◊t{unsigned int}.
+int i;
+long j;
+unsigned int k;
+
+(int) j * k: compute as int * unsigned int. apply usual conversion and get unsigned int (as unsigned int > int in memory). ◊uc{the long type affects after this procedure}
+
+i + (j*k): compute as int + unsigned int. apply usual conversion. the result will be unsigned int.

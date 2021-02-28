@@ -7,13 +7,13 @@
 
 In C, there's two numeric types: integer types and floating types.
 
-Values of the integer types can be either positive or negative numbers. By default, values of ◊type{int} types can have negative and positive ◊uc{numbers}, so we can use the values. But if we only needs values of positive number (plus zero), we can use ◊type{unsigned int}, that enables us to use number larger than the values of ◊type{signed int} ◊uc{as we can use memory that was assigned for negative integers to assign positive numbers}.
+◊type{int} type values can be negative or positive. ◊type{unsigned int} has positive number (and zero). (Though it's not always true,) ◊t{unsigned int} can store larger positive value than ◊type{signed int}.
 
-There's a situation where we need a number more than the memory of ◊type{int} can handle or need not that much memory of ◊type{int} can handle. C provides solution for these cases. For the case where larger number (thus larger memory) is required, we can use ◊type{long}, and for the case where lesser number (thus lesser memory) is sufficient, we can use ◊type{short}.
+There're other integer types than ◊t{int}. For larger number (thus requires larger memory), we can use ◊type{long}, and for lesser number (thus requires lesser memory), we can use ◊type{short}.
 
-We can also combine specifiers to build an integer type that meets our exact need. By default, one (or none) of ◊type{short, long} and one (or none) of ◊type{signed, unsigned} and ◊type{int} are the component to build our integer type of need. The order of specifiers (that is, the components except ◊type{int}) could be modified. ◊type{int} has to be the last word, but anything else's order isn't important. ◊uc{We also can drop the ◊type{int} when we use integer types}.
+Specifiers can be combined to build an integer type that meets our exact need. One (or none) of ◊type{short}, ◊t{long} and one (or none) of ◊type{signed}, ◊t{unsigned} and ◊type{int} are the components to build. The order of specifiers (the components except ◊type{int}) could be swapped. The only rule to follow is that ◊type{int} has to be the last word. ◊uc{We also can drop the ◊type{int} when ?}.
 
-As CPUs and memories capable in each computer varies, the range of values represented by six integer types varies from one machine to another. But there's a minimum rules that every compilers must obey. If you want detail, see 127p.
+Because CPUs and memories vary for each computer, value ranges of integer types vary from one machine to another. But there's a minimum rules that every compiler must obey. For the detail, see 127p.
 
 ◊bold{Integer Types in C99}
 
@@ -21,62 +21,87 @@ C99 provides additional integer types, ◊type{long long int} and ◊type{unsign
 
 ◊bold{Integer Constants}
 
-Constants are numbers that appear in the ◊uc{text} of a program, not numbers that are read, written, or computed. Integer constants in C can be written in decimal, octal, or hexadecimal. If you want to use octal constants, they must be preceded with 0. If you want to use hexadecimal constants, they must be preceded with 0x (case insensitive). Despite the appearances are different, the three constants are just an alternative way of writing the same number. It's just a matter of notation.
+Constants are numbers that appear in the ◊uc{text} of a program, and constants are not ◊uc{numbers that are read, written, or computed}. Integer constants can be written in decimal, octal, or hexadecimal. Octal constants must be preceded by 0. Hexadecimal constants must be preceded with 0x (case insensitive). Despite appearances are different, the three constants are just an alternative way of writing the same number with different notation.
 
-By default, type of integer constants is determined by the compiler depending on the size of value. The compiler changes type of a constant if it doesn't fit to a size of ◊check-this{an assigned memory} of that type. If you want to set type of an integer constant at the first time, append a proper letter at the end of the constant. If you needs details, check 129p.
+By default, type of integer constant depends on the size of its value. If size of a constant doesn't fit to size of the type's memory, the compiler changes type of the constant with a proper one.
+
+For decimal constant, the compiler seeks from ◊type{int} through ◊type{long int}, ◊type{unsigned long int} (as a last resort).
+For octal and hexadecimal constant, the compiler seeks from ◊type{int}, ◊type{unsigned int}, ◊type{long int}, and ◊type{unsigned long int}.
+
+You may want to choose type of a value by yourself. To do, append a proper letter at the end of the constant. Use L for ◊type{long}, U for ◊type{unsigned}, or you can use both, all case insensitive. If you needs details, check 129p.
 
 ◊bold{Integer Constants in C99}
 
-Because C99 provides ◊type{long long int} and ◊type{unsigned long long int}, ◊code{ll} and ◊code{ull}(or ◊code{llu}) (all case insensitive) can be used to specify type of a value.
+Because C99 provides ◊type{long long int} and ◊type{unsigned long long int}, ◊code{ll} and ◊code{ull}(or ◊code{llu}) (all case insensitive) can be used to ◊clarify{specify} type of a value.
 
-How a compiler choose the type of a value of integer constant is different from C89 compiler. If you need detail, check 129-130p.
+The way compiler choose type of integer constant value is different from C89 compiler. If you need detail, check 129-130p.
+
+For decimal constant with no suffix (like u, l), ◊uc is the smallest among ◊type{int} through ◊type{long int}, ◊C99{◊type{long long int}}.
+
+For octal and hexadecimal constant ◊uc{with no suffix}, goes through ◊type{int}, ◊type{unsigned int}, ◊type{long int}, ◊type{unsigned long int}, ◊C99{◊type{long long int}, and ◊type{unsigned long long int}}.
+
+When there's a suffix for a constant, type of the constant must include the suffix. For example, for a constant that contains ◊code{l}, its type should be the type among ◊type{long int} or ◊type{long long int}, and so on.
 
 ◊bold{Integer Overflow}
 
-When you evaluate arithmetic operations on integers, the type of the result is the same type of operands'. If the result can't be represented by the memory capacity for the type of result, the overflow occurs.
+When you evaluate arithmetic operations on integers, type of the result is the same as operands' type. If the result can't be represented by memory capacity of result type, overflow occurs.
 
-When the operands are ◊type{signed} type, the program's behavior is undefined, whereas when the operands are ◊type{unsigned}, the program's behavior is defined. Because the overflow may affect other aspect of program, it should be avoided ◊uc{whether it's predictable or not}.
+When operands are ◊type{signed} type, the program's behavior is undefined, whereas when the operands are ◊type{unsigned}, the program's behavior is defined. Because the overflow may affect other aspect of program, it should be avoided ◊uc{whether it's predictable or not}.
 
 ◊bold{Reading and Writing Integers}
 
-If the result of operation raises integer overflow, the type of the operands must be modified to proper one. If the operands are used in printf or scanf function, the content of these functions should be modified to be matched with the modified type. Check the proper ◊|conv-spec|s that are required, and change them.
+To fix integer overflow, the type of the operands must be modified to proper one. If we use the operands in printf and/or scanf function, the conversion specification of these functions should be modified to match the modified type.
 
 ◊uc{Why the table below has field for octal and hexadecimal? Is there a reason to consider integer constant? Or is this not for constant?}
 
+conversion specification table for integer
+
+for signed integer type
 ◊quick-table{
-type\notation | ◊?{int} | decimal | octal | hexadecimal
-◊type{unsigned int} | d | u | o | x
-◊type{short int} | hd | hu | ho | hx
-◊type{long int} | ld | lu | lo | lx
-◊type{long long int} | lld | llu | llo | llx
+type\notation | decimal 
+◊type{int} | d
+◊type{short int} | hd
+◊type{long int} | ld
+◊type{long long int} | lld
+}
+
+for unsigned integer type
+◊quick-table{
+type\notation | decimal | octal | hexadecimal
+◊type{unsigned int} | u | o | x
+◊type{unsigned short int} | hu | ho | hx
+◊type{unsigned long int} | lu | lo | lx
+◊type{unsigned long long int} | llu | llo | llx
 }
 
 ◊section{floating types}
 
-When we need variables to store numbers with decimal point, or exceedingly large or small, we can use floating types. C provides ◊type{float}, ◊type{double}, ◊type{long double}.
+Use floating types to store numbers that have decimal point, or numbers that are exceedingly large or small. C provides ◊type{float}, ◊type{double}, ◊type{long double}. Though it's confusing, ◊t{long double} is one of floating-point type.
 
-Because different computers have different specifications, the precision of floating types varies. But most modern computers follow the specifications in IEEE Standard 754.
+Because different computers have different specifications, precision of floating type varies. But most modern computers follow the specifications in IEEE Standard 754.
 
 ◊bold{Floating Constants}
 
-A floating constant needs a decimal point and/or an exponent; you can use either one of them, or use both. To use an exponent, letter e should be preceded by the exponent. ◊uc{The exponent describes the number to be used to scale with power of 10}.
+A floating constant needs a decimal point and/or an exponent; you can use either one of them, or use both. To use an exponent, it should be preceded by letter e. ◊uc{The exponent describes a number to be used to scale the value of the constant with power of 10}.
 
-◊uc{By default, floating constants are stored in memory in the same format as a ◊type{double} variable. As constants are not "variable", we cannot say something like "a variable for floating constant". But a floating constant should be stored in a memory anyway.}
+◊link[www.cs.auckland.ac.nz/references/unix/digital/AQTLTBTE/DOCU_010.HTM]{the floating constants are always interpreted as decimal}
 
-If you want a floating constant to be stored in specific format, you can indicate the format by appending a proper letter at the end of the constant. For example, if you want ◊code{57.0} to be stored in a ◊uc{◊type{long} format, write as ◊code{57.0L}}.
+By default, floating constants are stored as double-precision numbers.
+
+If you want a floating constant to be stored in specific format, you can indicate the format by appending a proper letter at the end of the constant. For example, if you want ◊code{57.0} to be stored in a ◊type{long} format, write as ◊code{57.0L}.
 
 ◊bold{Reading and Writing Floating-Point Numbers}
 
-%e, %f, and %g are the ◊|conv-spec|s for reading and writing single-precision floating-point numbers. values for ◊type{double} and ◊type{long double} needs specific letter be preceded.
+%e, %f, and %g are the ◊|conv-spec|s for reading and writing single-precision floating-point numbers. Values for ◊type{double} and ◊type{long double} needs additional letter to be preceded.
 
 ◊quick-table{
-type\◊conv-spec | | |
+type\notation | exponential form | fixed-decimal form | either e or f form
 ◊type{float} | e | f | g
 ◊type{double} | le | lf | lg
 ◊type{long double} | Le | Lf | Lg
 }
 
-◊conv-spec for ◊type{double} should be used only in scanf function, because printf function can print ◊type{double} values without the ◊|conv-spec|.
+◊C89{Do not use ◊c{l} in printf (to print ◊t{double} value.}
 
 
 ◊section{character types}
@@ -85,84 +110,105 @@ The values of ◊type{char} type may vary on different machines.
 
 ◊bold{Operations on Characters}
 
-Each characters has the corresponding integer value. Therefore, if a ◊type{char} value comes in an ◊|exp|, it'll be treated as an ◊type{int} value assigned for the character. As I mentioned before, different machine may have different character set and values, so be careful to use ◊type{char} values in ◊|exp|s.
+Each characters has the corresponding integer value. Therefore, when a character appears in a computation, C uses its integer value.
+
+◊codeblock{
+char ch;
+int i;
+
+i = 'a'; i is not 97. For character of type ◊t{int}, it'll be treated as number of the character.
+ch = 65; ch is now 'A.' For number of type ◊t{char}, it'll be treated as char value of the number.
+ch = ch + 1; ch is now 'B.' Increasing (or decreasing) number of type ◊t{char} modify its char value to another char value.
+ch++; ch is now 'C'
+}
+
+Comparison of ◊t{char} is done using the int value of the ◊t{char}.
 
 ◊bold{Signed and Unsigned Characters}
 
 Like the integer types, ◊type{char} type could be signed or unsigned.
 
-◊start-here
+◊C89{integral types refer to the integer types and the character types ◊uc{and enumerated types}.}
 
-◊later{integral types}
-
+◊C99{Unlike C89, C99 don't use integral types. It use integer type to cover broader range of types. In C99, integer types include the character types and ◊uc{the enumerated types.}}
 
 ◊bold{Arithmetic Types}
 
-◊later{◊hierarchy{arithmetic types}}
+The integer types and the floating types are called as arithmetic types as a whole.
 
+Integral types
+- ◊t{char}
+- Signed integer types
+- Unsigned integer types
+- Enumerated types
+Floating types
+
+◊later{C99 arithmetic types}
 
 ◊bold{Escape Sequences}
 
-To write special (nonprinting) characters, we use the escape sequence. The sequence consists of character escapes and numeric escapes. We can use character escapes by appending \ in front of a proper character. But this (character) escapes are limited in its number of possibility.
+Special (nonprinting) characters can be written with the escape sequence. There's two kinds of escape sequences: character escapes and numeric escapes.
 
-Numeric escapes can be a solution to this problem. They provide any character, thus not limited. We can use an octal escape sequence or a hexadecimal escape sequence by appending octal (or hexadecimal) number after "\".
+We can use character escapes by appending \ in front of a proper character. But this (character) escapes are limited in its number of possibility.
+
+Numeric escapes can be a solution to this problem. They provide any character, thus not limited. We can use an octal escape sequence or a hexadecimal escape sequence by writing octal (or hexadecimal) number preceded by ◊c{\}.
 
 ◊bold{Character-Handling Functions}
 
-The touper function in ◊header{ctype.h} can be used to convert a lower-case letter to upper-case.
+The toupper function in ◊code{ctype.h} is used to convert a lower-case letter to upper-case.
 
 ◊bold{Reading and Writing Characters using scanf and printf}
 
 To read and write a char type value, use %c ◊|conv-spec|.
 
-scanf를 쓸 때, 읽으려는 char 앞에 white-space가 있으면, char를 받는 변수 (&ch라고 하면 ch)에 char과 앞의 white-space까지 담는다. 이게 싫으면 %c 앞에 space를 준다. 그러면 ch에는 해당 char만 담긴다.
+When using scanf with just plane "%c", if there's whitespace before a character to read, the function will assign the character and the whitespace in the variable (%c). If you want to assign only the character in this case, specify the string of scanf preceded by whitespace like " %c".
 
 ◊bold{Reading and Writing Characters using ◊f{getchar} and ◊f{putchar}}
 
 ◊f{putchar} writes a single character. Each time ◊f{getchar} is called, it reads one character.
 
-◊f{getchar} is used as an idiom where we need to skip a character such as blank.
+◊f{getchar} can be used as an idiom where we need to skip a character such as blank.
 
-Because the way is different that ◊f{scanf} and ◊f{getchar} treat characters that they has "peeked" at but not read, be careful if you mix the two functions.
+Because the way is different that ◊f{scanf} and ◊f{getchar} treat characters that they has ◊uc{peeked at} but not read, be careful when you mix the two functions.
 
 ◊later{idioms using ◊f{getchar}}
 
 
 ◊section{type conversion}
 
-For arithmetic, computers are restrictive. We should give computers operands that have same size, same way of storing. Unlike computers, C is more opened for arithmetic. This language provides (implicit and explicit) ways to consult with situations where operands have different size, or stored in different way. These solutions let us to write more freely, because they'll convert our freely written operands to a proper specification for the computer.
+For arithmetic, computers are restrictive. We should give computers operands that have same size, same way of storing. Unlike computers, C is more opened. This language provides (implicit and explicit) ways to deal with situations where operands of an expression have different size, or stored in different way.
 
-Conversions are implicit or explicit. When the compiler do this job, it's implicit. When we (programmer) do this job, it's explicit. Because C has many arithmetic types, there's many rules for the converting.
+Conversions are either implicit or explicit. If the job is done by the compiler, it's called implicit. If it's done by us (programmer), it's called explicit. Because C has many arithmetic types, there's many rules for the converting.
 
-In this section, we'll cover a part of whole situations. ◊reference{chapter 9} explain the rest.
+In this section, we'll cover a part. ◊chapter-xref-later{functions} explains the rest.
 
 ◊bold{The Usual Arithmetic Conversions}
 
-This conversion is applied for operands of most binary operators, including the arithmetic, relational, and equality operators. When the types of operands are not the same, the conversion happens. Operands are converted in a way that their precision mostly preserved. There's a danger when an operand's size is beyond its type's capacity, resulting to overflow, and then gives meaningless value.
+This conversion is applied for operands of most binary operators, including the arithmetic, relational, and equality operators. When types of operands are not the same, the conversion occurs. Operands are converted in a way that their precision preserved as much as possible. There's a danger when an operand's size is beyond its type's memory capacity. It makes the result overflow, and put out meaningless value.
 
-The strategy that the compiler uses is ◊uc{to convert the "narrower" (that is, requires fewer bytes to store ◊uc{}) type to another operand's type}. This strategy is called promotion. Integral promotions which is one of the promotions, convert a ◊type{char} or ◊type{short} integer to ◊type{int} integer. 
+The strategy that the compiler uses is ◊uc{to convert the "narrower" (that is, requires fewer bytes to store the type's value) type to another operand's type (that is "wider" or at least the same with the "narrower" type)}. It's called promotion. One of it, integral promotion, convert a ◊type{char} or ◊type{short} integer to ◊type{int} integer. ◊C99{C99 compatible is integer promotions.}
 
 The rules for the usual arithmetic conversions are divided into two cases:
 
-- The type of at least one operand is a floating type
+1. The type of either operand is a floating type
 
-convert a narrower operand to these type (bigger type first applied)
+Convert a narrower operand to wider type. If there's an integer type value, convert the type so that two types are of float type. ◊uc{whatever integer type doesn't matter. Would the memory no problem? If an integer type's bit size is greater than that of a float type?}
 
 long double > double > float
 
-- Neither operand type is a floating type
+2. Neither operand type is a floating type
 
-same as above rule
+Apply integral promotion on both operands first. Then apply on the narrower operand the promotion with the order below.
 
 unsigned long int > long int > unsigned int > int
 
-for detail, read 144p.
-
 ◊bold{Conversion During Assignment}
 
-The type of the value that results from the ◊exp on the right side is converted to the type of ◊var on the left side. If the type of ◊var on the left is at least as wide as the ◊exp on the right, no problem. But if the type of ◊var on the left is narrower than the ◊exp on the right, there's a danger of lossing some information like precision.
+The type of the value that results from the ◊exp on the right side is converted to the type of ◊var on the left side. If the type of ◊var on the left is at least as wide as the ◊exp on the right, no problem. But if the type of ◊var on the left is narrower than the ◊exp on the right, there's a danger of losing a precision.
 
-Because a floating-point constant ◊uc{have} ◊type{double} by default, assigning a floating-point constant to ◊type{float} ◊var may raise a warning, because converting ◊type{double} to ◊type{float} has danger that just have said right above. Thus, when we meet this situation, it's good to append the f suffix to a floating-point constant.
+Because a floating-point constant ◊uc{have} ◊type{double} by default, assigning a floating-point constant to ◊type{float} ◊var may raise a warning, because converting ◊type{double} to ◊type{float} has the danger of precision.
+
+It's good to append the f suffix to a floating-point constant that will be assigned to a ◊type{float} variable. ◊uc{check chapter 2 where this is described}.
 
 ◊later{◊bold{Implicit Conversions in C99}}
 
@@ -170,13 +216,17 @@ for details, read 146-147p.
 
 ◊bold{Casting}
 
-If you want more control over type conversion than the control provided by implicit conversion, use casting.
+Casting is another conversion method. It gives you a greater control over type conversion than the usual arithmetic conversions.
 
 ◊form{ ( type-name ) expression }
 
-You can specify the type name you want an expression's type to be converted.
+This expression converts the type of ◊code{expression} into the type specified in ◊code{type-name}. If casting expression is an operand of binary operation, the "casted" type will be affected by ◊ref{◊bold{The Usual Arithmetic Conversion}} rule.
 
-if casting expression is an operand of binary operation, the "casted" type will be affected by ◊ref{◊bold{The Usual Arithmetic Conversion}} rule. Operator precedence could twist your intention in an ◊|exp|, so be careful to get an intended result (as a solution, use parenthesis.)
+In ◊code{frac_part = f - (int) f;}, the type casting ◊code{(int)} is applied to ◊code{f} to make its type int, cutting its fractional part from its value. But after that, its type is converted back to type ◊code{float} before the subtraction can be performed, because the usual arithmetic conversion is applied. As one has ◊type{float} and another has (temporary) ◊type{int}, the ◊type{int} is converted to ◊type{float} by the rule.
+
+Sometimes C regards ◊code{(type-name)} as a unary operator. It might different result from our intention. ◊uc{But could it be matter?}
+
+Operator precedence could twist your intention in an ◊|exp|, so be careful to get an intended result (as a solution, use parenthesis.)
 
 
 ◊section{type definitions}

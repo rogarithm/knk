@@ -2,11 +2,11 @@ choose legal/illegal. if legal, classify the constant as integer or floating-poi
 
 010E2
 
-Because it starts with 0, it should be interpreted as octal value. As ◊uc{the floating constants are interpreted as decimal}, this is illegal constant.
+Because it starts with 0, it should be interpreted as octal value. But as ◊link[www.cs.auckland.ac.nz/references/unix/digital/AQTLTBTE/DOCU_010.HTM]{the floating constants are always interpreted as decimal}, this is illegal constant.
 
 32.1E+5
 
-This is legal float constant.
+This is legal float constant. + sign is optional.
 
 0790
 
