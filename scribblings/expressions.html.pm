@@ -51,7 +51,7 @@ Unlike other languages, in C, assignment is an ◊|op|, just like ◊op{+}. Eval
 
 ◊bold{Lvalues}
 
-The assignment ◊|op| needs an lvalue as its left operand. The lvalue is ◊uc{an ◊uc{object} stored in computer memory}, ◊strong{not a constant or a result of a computation}. From the condition, because we can't use a constant, and we can't use an expression as it's a ◊uc{result of a computation}, among andidates of operands (◊|var|s, constants, and ◊|expr|s), only ◊|var| is the only element that can be lvalues for now.
+The assignment ◊|op| needs an lvalue as its left operand. The lvalue is ◊uc{an ◊uc{object} stored in computer memory}, ◊strong{not a constant or a result of a computation}. From the condition, ◊var is the only thing that can be an lvalue. Why? Because we (a) can't use a constant, and (b) can't use an expression that is a ◊uc{result of a computation}. Judging from the argument, among candidates of operands (◊|var|s, constants, and ◊|expr|s), only ◊|var| is the only element that can be lvalues for now.
 
 ◊uc{From 60p of the book (85p in pdf), ◊code{-i = j;} is said to be wrong. But as mentioned above, -i is a variable. Then why it's wrong?}
 
