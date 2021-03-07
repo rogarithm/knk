@@ -51,7 +51,7 @@ Unlike other languages, in C, assignment is an ◊|op|, just like ◊op{+}. Eval
 
 ◊bold{Lvalues}
 
-The assignment ◊|op| needs an lvalue as its left operand. The lvalue is ◊uc{an ◊uc{object} stored in computer memory}, ◊strong{not a constant or a result of a computation}. From the condition, because we can't use a constant, and we can't use an expression as it's a ◊uc{result of a computation}, among andidates of operands (◊|var|s, constants, and ◊|expr|s), only ◊|var| is the only element that can be lvalues for now.
+The assignment ◊|op| needs an lvalue as its left operand. The lvalue is ◊uc{an ◊uc{object} stored in computer memory}, ◊strong{not a constant or a result of a computation}. From the condition, ◊var is the only thing that can be an lvalue. Why? Because we (a) can't use a constant, and (b) can't use an expression that is a ◊uc{result of a computation}. Judging from the argument, among candidates of operands (◊|var|s, constants, and ◊|expr|s), only ◊|var| is the only element that can be lvalues for now.
 
 ◊uc{From 60p of the book (85p in pdf), ◊code{-i = j;} is said to be wrong. But as mentioned above, -i is a variable. Then why it's wrong?}
 
@@ -97,7 +97,17 @@ precedence | name | symbol(s) | associativity
 
 ◊bold{Order of Subexpression Evaluation}
 
-We can break any complicate ◊|expr|s into subexpressions by using the rules of ◊|op| precedence and associativity. But here's a problem that there's a chance of defining the order of evaluation of these subexpressions. ◊check-this{If a subexpression modifies one of its operands, its result is undefined.} If you need it, separate the original ◊|expr| into individual statements.
+Operator precedence and associativity rules let us know how the elements of an expression should be collected each other to determine uniquely where the parenthesis would go if the expression were fully parenthesized. But it doesn't mean we can always estimate the value of the expression. For multiple subexpressions with the same precedence, (with the exception of subexpressions involving the logical and, logical or, conditioinal, and comma operators) C doesn't determine the order, that is, which subexpression will be evaluated first, and second, and so on. So in ◊c{(a + b) * (c - d)}, we don't know whether ◊c{(a + b)} or ◊c{(c - d)} will be evaluated first.
+
+When a subexpression contains an assignment, the result of the statement is undefined:
+
+◊c{c = (b = a + 2) - (a = 1);}
+
+Do not write like this. Its value is always uncertain. Separate the assignment operators from expressions to individual statement.
+
+◊c{j = i * i++;}
+
+Same as the increment (or decrement) operator.
 
 ◊uc{fetching a ◊|var|} means to retrieve the value of the ◊|var| from memory.
 
