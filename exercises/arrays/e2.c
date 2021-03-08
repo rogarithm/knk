@@ -1,19 +1,7 @@
-how to use a ◊uc{digit (in character form)} as a subscript
+Describe how to use a ◊uc{digit (in character form)} as a subscript
 
-for example, letter A has 65 as its digit value, and letter a has 97 as its digit value. If we want a character form digit as a subscript, for uppercase:
+What is digit in character form?
 
-int a[26];
+We can use a letter as an array subscript. When using a character as a subscript, we have to subtract the initial value (in this case, 'a') from our character to "normalize" our subscript.
 
-a[digit - 97] = 0;
-
-#include <stdio.h>
-
-int main (void)
-{
-	int char_array[26];
-	char ch;
-
-	printf("%d", char_array[ch - 'a']);
-
-	return 0;
-}
+A digit in character form is the same as this, but the difference is we enter a digit, not a character. If we want to enter 'a' with a digit in character form, we can do by ◊c{a[65 - 65]}. The -65 is for "normalization".
