@@ -6,11 +6,10 @@ int main(void)
 		int n;
 
 		n = 2;
-
 		while (n < 40)
 		{
 				fib_numbers[n] = fib_numbers[n - 2] + fib_numbers[n - 1];
-				n = n + 1;
+				n++;
 		}
 
 		n = 0;
@@ -19,7 +18,7 @@ int main(void)
 				printf("%d, ", fib_numbers[n]);
 				if ((n == 9) || (n == 19) || (n == 29) || (n == 39))
 						printf("\n");
-				n = n + 1;
+				n++;
 		}
 
 		return 0;
