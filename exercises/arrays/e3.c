@@ -1,3 +1,3 @@
-#include <stdbool.c>
+#include <stdbool.h>
 
-bool weekend[7] = {false, true, true, true, true, true, false};
+bool weekend[7] = {true, false, false, false, false, false, true};
