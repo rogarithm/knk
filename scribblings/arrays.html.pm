@@ -10,7 +10,7 @@ Some ◊|var|s can store more than one ◊|val|s. These ◊|var|s are called agg
 
 An array is a data structure that can store more than one data ◊|val|s, all ◊|val|s have the same type. ◊|val|s of an array are called elements.
 
-To declare an array, specify (a) the type of its elements, (b) a name of the array, and (c) the number of elements like ◊c{int my_array[10]}. The length of the array ◊un{can be specified by} any (integer) constant expression (that is, a length of an array cannot be a variable or function call).
+To declare an array, specify (a) the type of its elements, (b) a name of the array, and (c) the number of elements like ◊c{int my_array[10]}. The length of the array ◊un{can be specified by} any (integer) constant expression (that is, a length of an array is an expression, but it cannot contain variables or function calls).
 
 ◊bold{Array Subscripting}
 
@@ -32,7 +32,7 @@ Above, an array subscript is an integer value. The subscript may be any integer 
 
 ◊bold{Array Initialization}
 
-An array can have an initial value (just like other ◊|var|s) when it's declared. To initialize an array, enter a list ◊|val|s enclosed by braces, each elements succeeded by comma. Type of ◊|val|s must be the same as the type of array. (If any) omitted ◊|val|s is assigned as 0. So to clean up an array by making all elements' ◊val to 0, just initialize with ◊c{{0}}.
+An array can have an initial value (just like other ◊|var|s) when it's declared. To initialize an array, enter a list of constant expressions enclosed by braces, each elements succeeded by comma. Type of ◊|val|s must be the same as the type of array. (If any) omitted ◊|val|s is assigned as 0. So to clean up an array by making all elements' ◊val to 0, just initialize with ◊c{{0}}.
 
 You cannot initialize with only enclosing braces, or with elements more than a number of an array's length.
 
