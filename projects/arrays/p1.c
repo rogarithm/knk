@@ -1,35 +1,33 @@
-/* Prints repeated digit(s) */
-
-#include <stdbool.h>   /* C99 only */
+// Prints the number of repeated digit(s)
 #include <stdio.h>
 
 int main(void)
 {
-		int repeat_num[10] = {0};
-		int digit;
-		long n;
-		int array_counter;
+	// does it have to have specified length?
+	int digit_seen[10] = {0};
+	int digit;
+	long n;
+	int array_position = 0;
 
-		array_counter = 0;
+	printf("Enter a number: ");
+	scanf("%ld", &n);
 
-		printf("Enter a number: ");
-		scanf("%ld", &n);
+	while (n > 0)
+	{
+		digit = n % 10;
+		digit_seen[digit]++;
+		n /= 10;
+	}
 
-		while (n > 0) {
-				digit = n % 10;
-				repeat_num[digit]++;
-				n /= 10;
-		}
+	printf("Repeated digit(s): ");
 
-		printf("Repeated digit(s): ");
+	while (array_position < 10)
+	{
+		if (digit_seen[array_position] > 1)
+			printf("%d ", array_position);
+		array_position++;
+	}
+	printf("\n");
 
-		while (array_counter < 10)
-		{
-				if (repeat_num[array_counter] >= 2)
-						printf("%d ", array_counter);
-				array_counter++;
-		}
-		printf("\n");
-
-		return 0;
+	return 0;
 }

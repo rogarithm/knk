@@ -1,15 +1,7 @@
-/*********************************************************
- * From C PROGRAMMING: A MODERN APPROACH, Second Edition *
- * By K. N. King                                         *
- * Copyright (c) 2008, 1996 W. W. Norton & Company, Inc. *
- * All rights reserved.                                  *
- * This program may be freely distributed for class use, *
- * provided that this copyright notice is retained.      *
- *********************************************************/
-
 /* interest.c (Chapter 8, page 169) */
 /* Prints a table of compound interest */
 
+// compounds interest monthly instead of annually.
 #include <stdio.h>
 
 #define NUM_RATES ((int) (sizeof(value) / sizeof(value[0])))
@@ -35,6 +27,7 @@ int main(void)
   for (year = 1; year <= num_years; year++) {
     printf("%3d    ", year);
     for (i = 0; i < NUM_RATES; i++) {
+			// this should be modified to compound monthly, not annually.
       value[i] += (low_rate + i) / 100.0 * value[i];
       printf("%7.2f", value[i]);
     }
@@ -42,4 +35,13 @@ int main(void)
   }
 
   return 0;
+}
+
+double monthly_rate = (double) low_rate / 12;
+
+double monthly_compound (double value, double monthly_rate)
+{
+	for (i = 0; i < 12; i++)
+		value += (monthly_rate + i) / 100.0 * value;
+	return value;
 }
