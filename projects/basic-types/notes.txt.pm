@@ -2,7 +2,7 @@
 
 p1 ok.
 
-? p2
+p2 ok, but need to clarify ◊c{while ((ch = getchar()) != EOF && ch != '\n')}
 simplify the condition to (i % 2 == 0) to test easily
 why the ch acts like it already has newline character?
 http://rabbit.eng.miami.edu/class/een218/getchar.html
