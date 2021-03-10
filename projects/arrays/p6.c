@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h> // for toupper function
 
 int main(void)
 {
@@ -10,12 +11,12 @@ int main(void)
 		while (message[counter])
 		{
 				scanf("%c", &message[counter]);
+				message[counter] = toupper(message[counter]);
 				counter++;
 		}
 
-		convert-to-uppercase-using-touper?
 		counter = 0;
-		while(message[counter])
+		while(message[counter]) // iterate until the array reaches the end of it
 		{
 				if (message[counter] == 'A')
 						message[counter] = 4;
@@ -32,11 +33,14 @@ int main(void)
 				counter++;
 		}
 
+		counter = 0;
 		printf("In B1FF-speak: ");
 		while (message[counter])
 		{
 				printf("%c", message[counter]);
 				counter++;
 		}
+		printf("\n");
+
 		return 0;
 }

@@ -12,12 +12,13 @@ int main(void)
 
 	printf("Enter phone number: ");
 	// ch = getchar();
-	while (ch != '\n')
+	while ((ch = getchar()) != EOF && ch != '\n')
 	{
-		ch = getchar();
+	//	ch = getchar(); // put into while loop
 		num = char_to_num(ch);
 		putchar(num);
 	}
+	printf("\n");
 
 	return 0;
 }

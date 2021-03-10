@@ -6,7 +6,7 @@
 int main(void)
 {
 	int n, i;
-	char ch;
+	int ch; // the output type of getchar must be int
 
 	printf("Enter number of entries in table: ");
 	scanf("%d", &n);
@@ -16,12 +16,12 @@ int main(void)
 	{
 		printf("%10d%10d\n", i, i * i);
 
-		if (i % 2 == 0)
+		if (i % 24 == 0)
 		{
 			printf("Press Enter to continue... ");
 			ch = 1;
 			ch = getchar();
-			while (ch != '\n')
+			while ((ch = getchar()) != EOF && ch != '\n')
 			{
 				ch = getchar();
 			}
