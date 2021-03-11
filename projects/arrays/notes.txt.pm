@@ -25,13 +25,15 @@ p6 ok.
 
 N p8
 
-N p9 some problems:
+? p9
 
-- make functions to check the position's status
-- how to repeat choosing direction value for next "checked" direction? -> do while?
+- make a directory for test
+- the design right now cannot give the new col (or row) value into the main function. Is there a way to give? or should I need to implement other design?
 
-- if 'A' is placed in random place, how to move its index?
-- how to write a cell is filled by other character? -> wrote check-filled
-- for other_direction, how to eliminate path that is checked already?
+p10 ok, but skeletal. refine later for formatting and organizing.
 
-N from p10 to p17
+p11 ok, but skeletal as p10.
+
+p12 ok. needs refine?
+
+N from p13 to p17
