@@ -12,10 +12,12 @@ p5 works, but need to check if it computes as I intended, and requires (simple) 
 
 Is this right? 1 annually increased value = compound of 12 iterately increased value
 
-? p6:
-- type of the array when it has chars, whitespace, comma as element
-- how to scan the array
-- method to convert to uppercase & number for proper chars
+p6 ok.
+
+ - but in printing part, why it prints garbage values when EOF condition is included?
+ - type of the array when it has chars, whitespace, comma as element -> always char.
+ - how to scan the array -> with getchar(), the elements of array can be scanned one by one.
+ - method to convert to uppercase & number for proper chars -> because the array is type of char, the number we want to convert will be the type of char, which means we need to specify them with ◊uc{character form of int}.
 
 N p7
 
