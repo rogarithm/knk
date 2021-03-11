@@ -19,7 +19,9 @@ p6 ok.
  - how to scan the array -> with getchar(), the elements of array can be scanned one by one.
  - method to convert to uppercase & number for proper chars -> because the array is type of char, the number we want to convert will be the type of char, which means we need to specify them with ◊uc{character form of int}.
 
-N p7
+? p7 how can simplify? Currently I need to define for all 5 cases.
+
+ currently on temp-p7. what's the problem? keep make it more simple to test!
 
 N p8
 
