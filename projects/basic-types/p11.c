@@ -10,10 +10,9 @@ int main (void)
 	while (getchar() != ' ')
 		trash = getchar();
 
-	while (getchar() != '\n')
-		last_name = getchar();
+	while ((last_name = getchar()) != EOF && last_name != '\n')
+		putchar(last_name);
 
-	putchar(last_name);
 	putchar(',');
 	putchar(32);
 	putchar(first_initial);

@@ -3,27 +3,21 @@
 
 int rarity(int ch);
 
-// test for rarity
-// from usage of getchar, the input type must be int.
-// the result remains the same whether it's char or int.
-// see the difference btw three cases. They're all different.
-// char -> unquoted input
-// int -> ascii val
-// putchar -> character
 int main (void)
 {
 	int ch;
+	int sum;
 
 	printf("Enter a word: ");
 
-	while (ch != '\n')
+	sum = 0;
+	while ((ch = getchar()) != EOF && ch != '\n')
 	{
-		ch = getchar();
 		ch = toupper(ch);
-		ch = rarity(ch);
-		putchar(ch);
+		sum += (int) rarity(ch);
 	}
-
+	printf("%d", sum);
+	printf("\n");
 
 	return 0;
 }
@@ -31,19 +25,20 @@ int main (void)
 int rarity(int ch)
 {
 	if ((ch == 'A') || (ch == 'E') || (ch == 'I') || (ch == 'L') || (ch == 'N') || (ch == 'O') || (ch == 'R') || (ch == 'S') || (ch == 'T') || (ch == 'U'))
-		ch = 49;
+		ch = 1;
 	if ((ch == 'D')	|| (ch == 'G'))
-		ch = 50;
+		ch = 2;
 	if ((ch == 'B') || (ch == 'C') || (ch == 'M') || (ch == 'P'))
-		ch = 51;
+		ch = 3;
 	if ((ch == 'F') || (ch == 'H') || (ch == 'V') || (ch == 'W') || (ch == 'Y'))
-		ch = 52;
+		ch = 4;
 	if (ch == 'K')
-		ch = 53;
+		ch = 5;
 	if ((ch == 'J') || (ch == 'X'))
-		ch = 56;
+		ch = 8;
 	if ((ch == 'Q') || (ch == 'Z'))
-		ch = 58;
+		ch = 10;
 
 	return ch;
 }
+

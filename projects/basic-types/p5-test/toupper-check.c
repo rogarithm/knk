@@ -10,24 +10,12 @@ int main (void)
 
 	printf("Enter a word: ");
 
-	// printf("%c", toupper(49));
-	// printf("\n");
-	// printf("%c", toupper('a'));
-	// printf("\n");
-
-	while (ch != '\n')
+	while ((ch = getchar()) != EOF && ch != '\n')
 	{
-		ch = getchar();
 		ch = toupper(ch);
 		putchar(ch);
 	}
-
-	// printf("value of char: %c", val);
-	// printf("\n");
-	// printf("value of int: %d", val);
-	// printf("\n");
-	// putchar(val);
-	// printf("\n");
+	printf("\n");
 
 	return 0;
 }
