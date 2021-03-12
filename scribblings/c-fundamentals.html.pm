@@ -66,17 +66,16 @@ printf function에서 \n는 문자열 중간에도 쓸 수 있고 여러 번 쓸
 
 ◊section{variables and assignment}
 
-프로그램이 복잡해지면, 프로그램을 돌리는 중에 데이터를 잠깐동안 저장해야할 때가 생긴다. 이럴 때 저장할 곳을 variables라고 부른다. 여기서는 variable을 어떻게 사용할지를 설명한다.
+Variable is a place to store data to be used while program execution.
 
 ◊bold{Types}
 
-◊item{variable을 쓰려면, 그 variable에 대한 type을 정해야 한다.}
-◊item{type은 그 variable이 어떤 종류의 값을 저장할지를 정한다.}
-◊item{어떤 type을 쓸지 잘 결정해야 한다. 왜냐하면 variable이 어떻게 저장될지, 연산을 어떻게 할지가 type에 따라 결정되기 때문이다.}
+Type is a kind of data. Type must be specified for every variable, because type specifies the way how data is stored, and determines possible operation for the data, and its range.
 
 ◊bold{Declarations}
 
-◊item{Variables를 쓰기 전에 선언(declare)해야 한다.}
+Variables must be declared (described) ◊uc{for the benefit of the compiler} before use.
+
 ◊item{선언하고자 하는 variable의 type을 적고 그 뒤에 variable의 이름을 적으면 된다. 각 선언 뒤에는 ;을 붙인다. 예를 들면:
 ◊codeblock{
 		int i; // this is variable declaration
