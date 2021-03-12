@@ -106,11 +106,11 @@ int main(void)
 }
 }
 
-Using the same name for ◊|var|s in multiple functions doesn't affect each other. That is, assigning a new value to a ◊var inside one of the functions doesn't change the value of the other ◊|var|s. For example, the ◊f{is_prime} function and ◊f{main} function has the variable n, but they doesn't affect each other. It'll has no effect if we modify one of the ◊|var|s into other name.
+Using the same variable name in two different functions doesn't affect each variable's value. That is, assigning a new value to a ◊var in one function doesn't change the value of the other ◊var in another function. For example, the ◊f{is_prime} function and ◊f{main} function has the same variable name ◊c{n}, but they doesn't affect each other. It'll has no effect if we modify one of the ◊|var|s into other name.
 
 ◊section{function declarations}
 
-It does not raise an error to put a function definition after another function or program that uses the definition of the function. But if you do, the compiler should anticipate what are return type and arguments' type for the function we've defined. If there's no clue for that, the compiler determine ◊t{int} as default for these. If it does not match with the type of the function definition, we'll get an error.
+Putting a function definition after a program that uses the function's definition does not raise an error. But it makes the compiler anticipate its type and number of argument(s), return type. If there's no clue, the compiler creates an implicit declaration of the function by thinking ◊t{int} as its output type. If it does not match with the type of the function definition, evaluating with the default declaration will raise an error.
 
 Putting a function definition before the program isn't a solution, because there are situations when we cannot put a definition before its use, especially when a function is recursive (like functions call each other in their body). So we need to declare (or make a prototype of) a function before calling it.
 
@@ -118,17 +118,15 @@ Putting a function definition before the program isn't a solution, because there
 return-type function-name ( parameters );
 }
 
-By declaring a function before calling the function enables the compiler to anticipate the function's return type and arguments' type.
-
-There's a convention about how to deal with parameter name of function prototype. If you need details, see 193p.
+By declaring a function before calling the function enables the compiler to anticipate the function's return type and arguments' type. Function declarations are known as function prototypes to distinguish them from the older style of function declaration where the parentheses are left empty.
 
 ◊?{Is is necessary to contain the input type for prototype, function declaration, and function definition?}
 
 ◊section{arguments}
 
-In C, arguments are passed by value. That is, each argument is passed (assigned to the corresponding parameter) after the ◊|expr|s get computed to be values. Because the parameter contains a copy of the argument's value, any changes made to the parameter during the execution of the function don't affect the argument. ◊?{How the parameters get changed?}
+Parameters appear in function definitions. They'll be initialized with arguments' values. Arguments appear in function calls..
 
-When a function is called, given arguments are get computed to be ◊|val|s, and the ◊|val|s are assigned to parameters of the function definition in proper positions inside the function body. Even if we modify the parameters in the function body, it doesn't affect the ◊val computed from argument. ◊uc{That is, we can modify the value computed from argument where its scope affects, but we cannot use the convenience outside its scope.}
+Arguments are passed by value. That is, each argument is passed (assigned to the corresponding parameter) after the ◊|expr|s get computed to be values. Parameters can be modified. But since the parameters contain a copy of the argument's value, this doesn't affect (the corresponding) argument's value. That is, the modified value of parameter cannot be maintained as modified out of the body of the function.
 
 For example, if we apply decrese ◊|op|, the ◊val from argument will not be changed:
 
@@ -137,7 +135,7 @@ int power(int x, int n)
 {
 	int result = 1;
 
-	while (n-- > 0) // during the loop, n will be decreased in every loop, but its value will not be modified.
+	while (n-- > 0) // during the loop, n will be decreased in every loop, but its value of argument, which is contained in the corresponding parameter, will not be modified.
 		result = result * x;
 	
 	return 0;
@@ -147,6 +145,8 @@ int power(int x, int n)
 ◊?{but how can we check the value of argument which was given to the parameter didn't change?}
 
 It has both good side and bad side.
+
+◊?{but how "modifying paramter" is valid sentence? The parameter is just a dummy value that must be filled with an argument to be used, isn't it?}
 
 ◊bold{Argument Conversions}
 
@@ -158,7 +158,7 @@ If the compiler hasn't seen the function's definition or prototype before the ca
 
 ◊bold{Array Arguments}
 
-We can use arrays as arguments. The length of array argument can be left unspecified when the argument is one-dimensional array. But if the function needs the length, we need to give it explicitly as an argument.
+We can use arrays as arguments. The length of array argument can be left unspecified when the argument is one-dimensional array. But if the function needs the length, (for now) we need to give it explicitly as an argument.
 
 ◊collect-array{We don't put brackets after an array name for parameter when calling a function that has array parameter.}
 
