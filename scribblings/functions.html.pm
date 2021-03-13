@@ -4,9 +4,9 @@
 
 ◊section{}
 
-Why we need function? Function is a way of minimizing repetitive work we encounter while we're programming. We might do a certain computing job to get a value, but with different argument each time we do the job. If we can save somewhere the way we compute the value, and then call each time we want by just call the name of the job with arguments, it would be nicer. This is why I think we need function.
+Why we need function? Function is a way of minimizing repetitive work we encounter while we're programming. We might do a certain computing job to get a value, but with different argument each time we do the job. If we can save somewhere the way of computing, and then call any time by just calling the name with its corresponding arguments, it would be nicer.
 
-Unlike the definition of function in mathmetics, some functions in C doesn't have arguments, and some ones doesn't computes a value. Other languages call a function that doesn't compute a value as a procedure, but there's no such distinction in C.
+Unlike the definition of function in mathmetics, some functions in C doesn't have arguments, and some ones doesn't computes a value. Other programming languages call a function that doesn't compute a value as a procedure, but there's no such distinction in C.
 
 ◊section{defining and calling functions}
 
@@ -21,13 +21,13 @@ double avrg(double a, double b)
 
 ◊em{defining function}
 
-We must specify a type of data a function returns and a type of data supplied to the function (this input data is called parameter). ◊collect-array{A function parameter is a ◊var that will be initialized later when the function is called.}
+We must specify a type of data a function returns and a type of data supplied to the function (this input data is called parameter). A function parameter is a ◊var that will be initialized the corresponding argument of the function later when the function is called.
 
 After specifying data, the body comes next, which will do the purpose of the function: computing a value, or make a side effect, etc.. The body is enclosed by braces.
 
 ◊em{calling function}
 
-To call a function, we write the function name, followed by arguments. By calling a function (that is, giving it arguments), we can give values to be used to initialize parameters of the function. An argument of a function can be a ◊|var| or an ◊|expr|, or just a value. Whatever we choose, these will finally be converted to the value that will be given to the function.
+To call a function, we write the function name, followed by arguments enclosed by parentheses. By calling a function, we can give values to be used to initialize parameters of the function. ◊uc{An argument of a function can be a ◊|var| or an ◊|expr|, or just a value. Whatever we choose, these will finally be converted to the value that will be given to the function}.
 
 The value of return statement like in ◊f{avrg} function will not be saved. By default, the program prints the value and discards it. If we need the returned value, assign the value in a ◊|var|.
 
@@ -53,7 +53,7 @@ void print_pun(void)
 }
 }
 
-We can make a function that needs no parameters. Like we write ◊t{void} in the position for return type, we need to write ◊t{void} in the position for function arguments. To call the function, write the function name with the parentheses, with no arguments inside.
+We can make a function with no parameters. Specify ◊t{void} type for function arguments. To call the function, write the function name with the parentheses, with no arguments inside.
 
 
 ◊bold{Function Definitions}
@@ -66,9 +66,8 @@ return-type function-name ( parameters )
 }
 }
 
-◊collect-array{There's several restrictions for function's return type. As one, functions may not return arrays. ◊?{Then is it possible to modify elements of an array?}}
+Function's return type cannot be array.
 
-Variables declared ◊uc{(and initialized)} in a function body can only be used inside the function.
 
 ◊bold{Function Calls}
 
@@ -76,9 +75,9 @@ Variables declared ◊uc{(and initialized)} in a function body can only be used 
 function-name ( list-of-arguements )
 }
 
-Because a ◊t{void} function returns nothing, the ◊t{void} function call will not be used as an operand in other ◊|expr|s. Therefore it'll always followed by a semicolon. For a non-◊t{void} function, a return value can be used in other ◊|expr|s, so there's a chance that a non-◊t{void} function call may not end with semicolon.
+Because a ◊t{void} function returns nothing, the ◊t{void} function call will not be used as an operand in other ◊|expr|s. ◊consider-delete{Therefore it'll be always followed by a semicolon. For a non-◊t{void} function, a return value can be used in other ◊|expr|s, so there's a chance that a non-◊t{void} function call may not end with semicolon.}
 
-If we don't need a return value of non-◊t{void} function, put semicolon after the function call. ◊uc{For a non-◊t{void} function,} the semicolon-ended function call is an ◊xref[expressions]{expression statement}. As an alternative, ◊xref[basic-types]{casting} ◊code{(void)} can deliver programmer's intention that he/she wants to ignore the result value of the function.
+◊consider-delete{If we don't need a return value of non-◊t{void} function, put semicolon after the function call.} ◊uc{For a non-◊t{void} function,} the semicolon-ended function call is an ◊xref[expressions]{expression statement}. As an alternative, ◊xref[basic-types]{casting} ◊code{(void)} can deliver programmer's intention that he/she wants to ignore the result value of the function.
 
 ◊bold{Testing Whether a Number Is Prime}
 
@@ -158,11 +157,11 @@ If the compiler hasn't seen the function's definition or prototype before the ca
 
 ◊bold{Array Arguments}
 
-We can use arrays as arguments. The length of array argument can be left unspecified when the argument is one-dimensional array. But if the function needs the length, (for now) we need to give it explicitly as an argument.
+Array can be used as argument. For one-dimensional array, the length of ◊strong{parameter} can be left unspecified. But if the function needs its length, (for now) we need to give it explicitly in function call as an argument.
 
-◊collect-array{We don't put brackets after an array name for parameter when calling a function that has array parameter.}
+When calling a function with array parameter, just specify an array name without brackets (which is a must for array paramter).
 
-A function can't check if we give right length of an array. We can use this feature to give smaller length to compute only for that value. But we also need to be careful not to give bigger length than the array has, as it may cause undefined behavior.
+The compiler can't check whether we give right length of an array. This feature can be used to apply computation for part of whole length of an arry by giving a length shorter than its whole. But we also need to be careful not to give longer length than it has, because it may cause undefined behavior.
 
 A function can change the elements of an array parameter, and ◊uc{we can use the modified value outside the execution.} 
 
@@ -172,7 +171,7 @@ For multi-dimensional arrays, we cannot omit array length except the first dimen
 
 VLAs can be used as parameter.
 
-parameter for variable (that'll be used for array) must come before the array.
+◊uc{parameter for variable (that'll be used for array) must come before the array}.
 
 Prototypes for VLAs can be written as ordinary, but the ◊var for VLA can be written as *. The * can give the compiler a clue that the array uses as its length a ◊var that is (or can be) omitted in the prototype, but located before the array argument.
 
