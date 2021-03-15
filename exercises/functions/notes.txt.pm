@@ -1,10 +1,10 @@
 #lang pollen
 
-e1
+e1 ok.
 
-e2 ◊? of ◊section{function declarations}
+e2 ok.
 
-e3
+e3 ok.
 
 e4
 

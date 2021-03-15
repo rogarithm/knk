@@ -11,7 +11,7 @@ int day_of_month(int month, int year)
 {
 	if (month == 1)
 		return 31;
-	if (month <= 7)
+	if ((1 < month) && (month <= 7))
 		return (30 * month) + ((month + 1) / 2) + leap_day(year);
 	// compute day in each months as 30 at first, and remove trailing days for Feb with leap_day(year). If leap_year, Feb is 29 days, so remove just 1; if not leap_yaer, Feb is 28 days, so remove 2.
 	if ((7 < month) && (month <= 12))
