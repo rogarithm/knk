@@ -1,3 +1,4 @@
+// returns the number of digits in n
 #include <stdio.h>
 
 int num_digits(int n)
@@ -16,9 +17,9 @@ int num_digits(int n)
 
 int main(void)
 {
-	printf("num_digits(1) is %d\n", num_digits(1));
-	printf("num_digits(12) is %d\n", num_digits(12));
-	printf("num_digits(1340) is %d\n", num_digits(1340));
+	printf("There's %d digits in 1\n", num_digits(1));
+	printf("There's %d digits in 12\n", num_digits(12));
+	printf("There's %d digits in 1340\n", num_digits(1340));
 
 	return 0;
 }

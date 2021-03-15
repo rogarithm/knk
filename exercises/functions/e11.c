@@ -1,11 +1,12 @@
 #include <stdio.h>
+
 float compute_GPA(char grades[], int n);
 
 int main(void)
 {
 	char g[] = { 'a', 'B', 'c', 'd', 'f' };
 
-	printf("when { A, B, C, C, F }, the gpa is same as 2 == %f\n", compute_GPA(g, 5));
+	printf("when { A, B, C, D, F }, the gpa is same as 2 == %.2f\n", compute_GPA(g, 5));
 
 	return 0;
 }

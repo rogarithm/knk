@@ -1,31 +1,37 @@
 #include <stdio.h>
 
+int gcd(int m, int n);
+
+int main(void)
+{
+	int m, n;
+	printf("Enter two integers: ");
+	scanf("%d %d", &m, &n);
+	gcd(m, n);
+
+	printf("Greatest common divisor: %d\n", gcd(m, n));
+	return 0;
+}
+
 int gcd(int m, int n)
 {
-		int temp;
-		int ans;
+	int temp;
+	int ans;
 
-		printf("Enter two integers: ");
-		scanf("%d %d", &m, &n);
-		if (m >= n) // no need to swap vals
-				;
-		if (m < n) // need to swap vals
-		{
-				temp = m;
-				m = n;
-				n = temp;
-		}
-		// after position check, do compute
-		while (n != 0)
-		{
-				temp = m % n;
-				m = n;
-				n = temp;
-		}
-		ans = m;
+	if (m < n) // m always have to be larger than n
+	{
+		temp = m;
+		m = n;
+		n = temp;
+	}
 
-		printf("Greatest common divisor: %d", ans);
-		printf("\n");
+	while (n != 0) // after position check, do compute
+	{
+		temp = m % n;
+		m = n;
+		n = temp;
+	}
+	ans = m;
 
-		return 0;
+	return ans;
 }
