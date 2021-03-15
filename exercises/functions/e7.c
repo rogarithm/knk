@@ -1,4 +1,4 @@
-function definition
+// What if function argument's type is different from the function parameter's type?
 
 int f(int a, int b) { ... }
 
@@ -11,4 +11,8 @@ double x;
 (d) x = f(3.15, 9.28);
 (e) f(83, 12);
 
-if the compiler has seen the function definition, arguments' type of: (a), (b) and (c) will conserved, (c) and (d) will converted to int. Since the return type for the function is specified as integer, they'll be computed to integer value. From ◊xref{basic-type} conversion during assignment, it would be matter when the ◊var that will contain the return value has narrower type and the value's one. As it's not, there will be no matter. ◊uc{is there any chance that the value exceeds integer type limit?} Thus all is legal.
+1. Say, the function definition functions as a prototype. Then in all cases, arguments will be treated as int. So for (c) and (d), their arguments will be converted to int.
+
+2. The value of function evaluation has int type. When assigned to the same type, it'll has no matter. But if assigned to double, function's value will be converted to  double. The double type is wider than int, it'll be no matter in conversion.
+
+3. Thus all cases are legal.

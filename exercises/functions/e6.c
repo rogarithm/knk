@@ -35,10 +35,10 @@ int digit(int n, int k)
 
 int main(void)
 {
-	printf("digit(829, 1) returns %d\n", digit(829, 1));
-	printf("digit(829, 2) returns %d\n", digit(829, 2));
-	printf("digit(829, 3) returns %d\n", digit(829, 3));
-	printf("digit(829, 4) returns %d\n", digit(829, 4));
+	printf("1's digit of 829 is %d\n", digit(829, 1));
+	printf("2's digit of 829 is %d\n", digit(829, 2));
+	printf("3's digit of 829 is %d\n", digit(829, 3));
+	printf("4's digit of 829 is %d\n", digit(829, 4));
 
 	return 0;
 }
