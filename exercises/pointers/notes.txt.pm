@@ -1,19 +1,29 @@
 #lang pollen
 
-? e1 (h) &*i seems not right, but is it?
+? e1
 
-? e2 (e) p = *&q; confusing from the same reason of (h) in e1.c
+Is there any difference between &* and *& for cases when applied to a pointer and an int value?
 
-e3
+? e2
 
-e4
+Can an address have its address?
+Does the address operator not affect the validity that pointer can be an lvalue?
+&* and *& doesn't modify the operand's property?
 
-e5 need a test
+e3 ok.
 
-? e6 how to iteratively choose second-largest?
+e4 ok.
 
-? e7
+e5 ok.
 
- - work in progress
- - make a skeletal code
- - how to divide conditions?
+e6 ok.
+
+ - test for multiple cases?
+
+e7 ok.
+
+ - make cases for test
+
+? e8
+
+ - works. but is it valid to declare a pointer inside a function and use it as a return value for main?
