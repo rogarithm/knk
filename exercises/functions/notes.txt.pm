@@ -42,7 +42,7 @@ e13-rev seems ok, but raises segmentation fault. Needs debugging
 
 e14 seems to work, but an error occurs (control may reach end of non-void function). Is this from difference btw return type of functions and printf's bool conv-spec in main function?
 
-? e15 how to simplify?
+e15 simplify, but not sure it's the author's intention to use assignment for reducing return statement.
 
 N e16
 
