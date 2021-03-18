@@ -1,16 +1,26 @@
+#include <stdio.h>
 double inner_product(double a[], double b[], int n);
+
+int main(void)
 {
-	int count = 0;
-	int sum = 0;
+	double a[] = {1.0, 2.0, 3.0};
+	double b[] = {1.0, 2.0, 3.0};
 
-	// if the length of two arrays are different, raise an error
-	
-	while (count < n)
-	{
-		sum = sum + (a[count] * b[count]);
-		count++;
-	}
-
-	return sum;
+	printf("%.1f \n", inner_product(a, b, 3));
+	return 0;
 }
 
+// return a[0] * b[0] + a[1] * b[1] + ... + a[n-1] * b[n-1].
+double inner_product(double a[], double b[], int n)
+{
+	int i = 0;
+	int product = 0;
+
+	while (i < n)
+	{
+		product += (a[i] * b[i]);
+		i++;
+	}
+
+	return product;
+}

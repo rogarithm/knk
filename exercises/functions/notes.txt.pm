@@ -36,13 +36,13 @@ e11
 
 - refine with getchar(), but not sure its validity. When all revision done, e11-rev -> e11, and rm e11.
 
-e12
+e12 ok.
 
-e13
+e13-rev seems ok, but raises segmentation fault. Needs debugging
 
 e14 seems to work, but an error occurs (control may reach end of non-void function). Is this from difference btw return type of functions and printf's bool conv-spec in main function?
 
-N e15
+? e15 how to simplify?
 
 N e16
 
