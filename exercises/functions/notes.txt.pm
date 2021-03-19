@@ -44,10 +44,13 @@ e14 seems to work, but an error occurs (control may reach end of non-void functi
 
 e15 simplify, but not sure it's the author's intention to use assignment for reducing return statement.
 
-N e16
+e16 ok.
 
-N e17
+e17 ok.
 
-N e18
+e18 ok. but why my first attempt doesn't work?
+
+ - control may reach end of non-void function warning
+ - should I use return for else clause also?
 
 * e19

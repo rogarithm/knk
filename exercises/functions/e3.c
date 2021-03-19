@@ -9,6 +9,7 @@ int main(void)
 	scanf("%d %d", &m, &n);
 	gcd(m, n);
 
+	printf("Greatest common divisor: %d\n", gcd(m, n));
 	return 0;
 }
 
@@ -32,7 +33,5 @@ int gcd(int m, int n)
 	}
 	ans = m;
 
-	printf("Greatest common divisor: %d\n", ans);
-
-	return 0;
+	return ans;
 }
