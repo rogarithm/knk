@@ -41,7 +41,7 @@ Why we use pointer for array processing instead of subscripting? Because it's fa
 
 ◊bold{combining the * and ++ (or --) operators}
 
-◊code{*} (indirection) and ++ (or --) operators are often combined in statements that manipulate array elements. When these operators are combined, one operator is performed on the pointer first, and another one is performed next. As you may know, * retrieves a content that a pointer points to, ++ moves one element (when the operand is a pointer to array.) But when we see ◊code{(*p)++}, we can see the ◊code{++} operator will be applied to the ◊code{(*p)}, meaning the ◊code{++} increase the object the ◊code{p} points to. This is different from ◊code{*p++}, where ◊code{++} make the ◊code{p} points to the element to right from the previously pointed element. There's four legal combinations:
+◊code{*} (indirection) and ++ (or --) operators are often combined in statements that manipulate array elements. When these operators are combined, one operator is performed on the pointer first, and another one is performed next. As you may know, * retrieves a content that a pointer points to, ++ moves one element (when the operand is a pointer points to an array.) But when we see ◊code{(*p)++}, we can see the ◊code{++} operator will be applied to the ◊code{(*p)}, meaning the ◊code{++} increase the object the ◊code{p} points to. This is different from ◊code{*p++}, where ◊code{++} make the ◊code{p} points to the element right from the previously pointed element. There's four legal combinations:
 
 ◊quick-table{
 expression | meaning
