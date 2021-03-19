@@ -1,10 +1,20 @@
 #lang pollen
 
-N p1 after reading recursion part
+? p1
 
-p2 separate the tax computation procedure as a function
+ - Should I implement the input part for the user determine the number of integers for array?
+   Or like qsort.c, define array's number of element and notify with message?
+ - If I should implement the first way, how to stop entering input?
 
-N p3 preliminary (p9 for arrays) have not solved yet
+p2
+
+ - separate the tax computation procedure as a function
+ - move printing function to main
+
+N p3
+
+ - preliminary (p9 for arrays) have not solved yet
+ - still not solved yet.
 
 N p4 not done p16 of arrays chapter yet
 

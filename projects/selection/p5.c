@@ -1,4 +1,16 @@
 #include <stdio.h>
+void tax_for_income(int income);
+
+int main(void)
+{
+		int test_income;
+
+		printf("Enter the amount of taxable income: ");
+		scanf("%d", &test_income);
+		tax_for_income(test_income);
+
+		return 0;
+}
 
 void tax_for_income(int income)
 {
@@ -21,15 +33,4 @@ void tax_for_income(int income)
 				printf("%.2f\n", 230.00 + ((income - 7000) * 0.07));
 
 		return ;
-}
-
-int main(void)
-{
-		int test_income;
-
-		printf("Enter the amount of taxable income: ");
-		scanf("%d", &test_income);
-		tax_for_income(test_income);
-
-		return 0;
 }
