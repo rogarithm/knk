@@ -148,21 +148,21 @@ Pass-by-value has both good side and bad side.
 
 ◊bold{Argument Conversions}
 
-For function calls in C, the arguments' type allowed to be different with the function's parameter type. For some cases, there's a rule for converting the arguments' type. But don't trust. There's a danger of error, so do explicitly clarify the arguments' type and do not let it be done automatically.
+For function calls in C, the arguments' type are allowed to be different from the function's parameter type. For some cases, there's a rule for converting the arguments' type. But don't trust. There's a danger of error, so do explicitly clarify the arguments' type and do not let it be done automatically.
 
-If the compiler has seen the function's definition or prototype before the call, the compiler will implicitly convert the arguments' type into parameters' one.
+If the compiler has seen the function's definition or prototype before the function call, the compiler will implicitly convert the arguments' type into parameters' type.
 
-If the compiler hasn't seen the function's definition or prototype before the call, the compiler performs the default argument promotion. For details, see 194p.
+If the compiler hasn't seen the function's definition or prototype before the function call, the compiler performs the default argument promotion. For details, see 194p.
 
 ◊bold{Array Arguments}
 
-Array can be used as argument. For one-dimensional array, the length of ◊strong{parameter} can be left unspecified. But if the function needs its length, (for now) we need to give it explicitly in function call as an argument.
+Array can be used as function argument. For one-dimensional array, the length of ◊strong{parameter} can be left unspecified. But if the function needs its length, (for now) we need to give it explicitly ◊uc{in function call as an argument}.
 
 When calling a function with array parameter, just specify an array name without brackets (which is a must for array paramter).
 
-The compiler can't check whether we give right length of an array. This feature can be used to apply computation for part of whole length of an arry by giving a length shorter than its whole. But we also need to be careful not to give longer length than it has, because it may cause undefined behavior.
+The compiler can't check whether we give right length of an array. This feature can be used to compute only a part of an array by giving a length shorter than its original length. But we also need to be careful not to give longer length of array, because it may cause undefined behavior.
 
-A function can change the elements of an array parameter, and ◊uc{we can use the modified value outside the execution.} 
+A function can change the elements of an array parameter, and ◊uc{we can use the modified value outside the function.} 
 
 For multi-dimensional arrays, we cannot omit array length except the first dimension. This can be solved by using ◊xref{arrays of pointers} or c99's ◊xref{variable-length array parameters}.
 
