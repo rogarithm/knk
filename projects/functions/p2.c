@@ -1,6 +1,6 @@
 #include <stdio.h>
+
 float compute_tax(int income);
-void tax_for_income(int income);
 
 int main(void)
 {
@@ -8,7 +8,7 @@ int main(void)
 
 		printf("Enter the amount of taxable income: ");
 		scanf("%d", &test_income);
-		tax_for_income(test_income);
+		printf("%.2f\n", compute_tax(test_income));
 
 		return 0;
 }
@@ -32,11 +32,3 @@ float compute_tax(int income)
 
 	return tax;
 }
-
-void tax_for_income(int income)
-{
-	printf("%.2f", compute_tax(income));
-
-	return ;
-}
-

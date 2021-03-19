@@ -1,32 +1,40 @@
-stores input integers into an array
-counts a length of the array
-
 #include <stdio.h>
 
 int main(void)
 {
-	int flag = 1;
-	int input;
-	int a[], count = 0;
+	int a[], i = 0;
 
-	while (flag != 0)
+	printf("Enter a series of integers: ");
+
+	// how to store undetermined number of integers?
+	while (q) // what this should be?
 	{
-	printf("enter a series of integers :");
-	scanf(" %d", &input);
-	a[count] = input;
-	if (input == 0)
-		flag = 0;
+		scanf("%d", &a[i]);
+		i++;
 	}
+
+	selection_sort(a, i);
 
 	return 0;
 }
 
 
-find the largest element of the input array
-move the largest element to the last position in the array
-recursively call itself to sort all elements
-void selection_sort(int a[])
+/*
+** find the largest element of the input array
+** move the largest element to the last position in the array
+** recursively call itself to sort all elements
+*/
+// void selection_sort(int a[], len)
+void selection_sort() // In the problem, input is not specified.
 {
-	while 
+	int largest = a[0];
 
+	while (i < len)
+	{
+		if (largest < a[i])
+			largest = a[i];
+		i++;
+	}
+
+	a[n - 1] = largest;
 }
