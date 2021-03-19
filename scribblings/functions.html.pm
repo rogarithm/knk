@@ -6,7 +6,7 @@
 
 Why we need function? Function is a way of minimizing repetitive work we encounter while we're programming. We might do a certain computing job to get a value, but with different argument each time we do the job. If we can save somewhere the way of computing, and then call any time by just calling the name with its corresponding arguments, it would be nicer.
 
-Unlike the definition of function in mathmetics, some functions in C doesn't have arguments, and some ones doesn't computes a value. Other programming languages call a function that doesn't compute a value as a procedure, but there's no such distinction in C.
+Unlike the definition of function in mathmetics, some functions in C doesn't have arguments, and some doesn't compute value. Other programming languages call as a procedure a function that doesn't compute a value, but there's no such distinction in C.
 
 ◊section{defining and calling functions}
 
@@ -21,15 +21,15 @@ double avrg(double a, double b)
 
 ◊em{defining function}
 
-We must specify a type of data a function returns and a type of data supplied to the function (this input data is called parameter). A function parameter is a ◊var that will be initialized the corresponding argument of the function later when the function is called.
+We must specify a type of data a function returns and a type of data supplied to the function (this input data is called parameter). A function parameter is a ◊var that will be initialized with the corresponding argument of the function later when the function is called.
 
 After specifying data, the body comes next, which will do the purpose of the function: computing a value, or make a side effect, etc.. The body is enclosed by braces.
 
 ◊em{calling function}
 
-To call a function, we write the function name, followed by arguments enclosed by parentheses. By calling a function, we can give values to be used to initialize parameters of the function. ◊uc{An argument of a function can be a ◊|var| or an ◊|expr|, or just a value. Whatever we choose, these will finally be converted to the value that will be given to the function}.
+To call a function, we write the function name, followed by arguments enclosed by parentheses. By calling a function, we can give values to initialize function parameter. ◊uc{An argument of a function can be a ◊|var| or an ◊|expr|, or just a value. Whatever we choose, these will finally be converted to the value that will be given to the function}.
 
-The value of return statement like in ◊f{avrg} function will not be saved. By default, the program prints the value and discards it. If we need the returned value, assign the value in a ◊|var|.
+The value of return statement will not be saved as you can see in the return statement of ◊f{avrg} function. By default, program prints its return value and discards it. If we need the return value, assign it in a ◊|var|.
 
 
 ◊bold{Printing a Countdown}
@@ -41,7 +41,7 @@ void print_count(int n)
 }
 }
 
-If a function does not return a value, we specify this by writing the function's return type ◊t{void}, just like the ◊f{print_count} function.
+If a function does not return a value, we specify this by writing the function's return type ◊t{void}.
 
 
 ◊bold{Printing a Pun (Revisited)}
@@ -53,7 +53,7 @@ void print_pun(void)
 }
 }
 
-We can make a function with no parameters. Specify ◊t{void} type for function arguments. To call the function, write the function name with the parentheses, with no arguments inside.
+We can make a function that has no parameter. Specify ◊t{void} type for function arguments. Function call must be the function name followed by the parentheses, with no arguments inside.
 
 
 ◊bold{Function Definitions}
@@ -66,18 +66,19 @@ return-type function-name ( parameters )
 }
 }
 
-Function's return type cannot be array.
+There's one rule for function's return type. It cannot be an array.
 
 
 ◊bold{Function Calls}
 
 ◊form{
-function-name ( list-of-arguements )
+function-name ( list-of-arguments )
 }
 
-Because a ◊t{void} function returns nothing, the ◊t{void} function call will not be used as an operand in other ◊|expr|s. ◊consider-delete{Therefore it'll be always followed by a semicolon. For a non-◊t{void} function, a return value can be used in other ◊|expr|s, so there's a chance that a non-◊t{void} function call may not end with semicolon.}
+Because a ◊t{void} function returns nothing, the ◊t{void} function call will not be used as an operand in other ◊|expr|s.
 
-◊consider-delete{If we don't need a return value of non-◊t{void} function, put semicolon after the function call.} ◊uc{For a non-◊t{void} function,} the semicolon-ended function call is an ◊xref[expressions]{expression statement}. As an alternative, ◊xref[basic-types]{casting} ◊code{(void)} can deliver programmer's intention that he/she wants to ignore the result value of the function.
+◊uc{For a non-◊t{void} function,} the semicolon-ended function call is an ◊xref[expressions]{expression statement}. As an alternative, ◊xref[basic-types]{casting} ◊code{(void)} can deliver programmer's intention that he/she wants to ignore the result value of the function.
+
 
 ◊bold{Testing Whether a Number Is Prime}
 
@@ -105,27 +106,27 @@ int main(void)
 }
 }
 
-Using the same variable name in two different functions doesn't affect each variable's value. That is, assigning a new value to a ◊var in one function doesn't change the value of the other ◊var in another function. For example, the ◊f{is_prime} function and ◊f{main} function has the same variable name ◊c{n}, but they doesn't affect each other. It'll has no effect if we modify one of the ◊|var|s into other name.
+Using the same variable name in two different functions doesn't affect each variable's value. That is, assigning a new value to a ◊var in one function doesn't change the value of the other ◊var in another function.
 
 ◊section{function declarations}
 
-Putting a function definition after a program that uses the function's definition does not raise an error. But it makes the compiler anticipate its type and number of argument(s), return type. If there's no clue, the compiler creates an implicit declaration of the function by thinking ◊t{int} as its output type. If it does not match with the type of the function definition, evaluating with the default declaration will raise an error.
+Putting a function definition after a program that uses the function does not raise an error. But it makes the compiler anticipate its type and number of argument(s), also its return type. If there's no clue, the compiler creates an implicit declaration of the function by assigning its output type as ◊t{int}. If ◊t{int} isn't the type of the function definition, its evaluation will raise an error.
 
-Putting a function definition before the program isn't a solution, because there are situations when we cannot put a definition before its use, especially when a function is recursive (like functions call each other in their body). So we need to declare (or make a prototype of) a function before calling it.
+Putting a function definition before the program isn't a complete solution, because there are situations where we can't put a definition before its use, especially when a function is recursive (where functions call each other). So we need to declare (or make a prototype of) a function before calling it.
 
 ◊form{
 return-type function-name ( parameters );
 }
 
-By declaring a function before calling the function enables the compiler to anticipate the function's return type and arguments' type. Function declarations are known as function prototypes to distinguish them from the older style of function declaration where the parentheses are left empty.
+Declaring a function before its function call lets the compiler know the function's return type and arguments' type. ◊consider-delete{Function declarations are known as function prototypes to distinguish them from the older style of function declaration where the parentheses are left empty.}
 
-◊?{Is is necessary to contain the input type for prototype, function declaration, and function definition?}
+◊?{Is containing input type always necessary for prototype, function declaration, and function definition?}
 
 ◊section{arguments}
 
-Parameters appear in function definitions. They'll be initialized with arguments' values. Arguments appear in function calls..
+Parameters appear in function definition. They'll be initialized with arguments' values from function call.
 
-Arguments are passed by value. That is, each argument is passed (assigned to the corresponding parameter) after the ◊|expr|s get computed to be values. Parameters can be modified. But since the parameters contain a copy of the argument's value, this doesn't affect (the corresponding) argument's value. That is, the modified value of parameter cannot be maintained as modified out of the body of the function.
+Arguments are passed by value. That is, each argument is passed (assigned to the corresponding parameter) after each argument's ◊|expr| get computed to value. Parameters can be modified, but since the parameters contain a copy of the argument's value, the modification of parameter doesn't modify corresponding argument. That is, the modified value of parameter cannot be remained as modified out of the body of the function.
 
 For example, if we apply decrese ◊|op|, the ◊val from argument will not be changed:
 
@@ -134,16 +135,14 @@ int power(int x, int n)
 {
 	int result = 1;
 
-	while (n-- > 0) // during the loop, n will be decreased in every loop, but its value of argument, which is contained in the corresponding parameter, will not be modified.
+	while (n-- > 0) ◊#{during the loop, n will be decreased in every loop, but its value of argument, which is contained in the corresponding parameter, will not be modified.}
 		result = result * x;
 	
 	return 0;
 }
 }
 
-◊?{but how can we check the value of argument which was given to the parameter didn't change?}
-
-It has both good side and bad side.
+Pass-by-value has both good side and bad side.
 
 ◊?{but how "modifying paramter" is valid sentence? The parameter is just a dummy value that must be filled with an argument to be used, isn't it?}
 
