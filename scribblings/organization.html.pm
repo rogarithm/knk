@@ -2,19 +2,21 @@
 
 ◊title{program organization}
 
-issues when a program contains more than one function. discuss local/external variables, blocks (compound statements containing declarations), scope rules, and how to organize the big program.
+Discusses issues when a program contains more than one function. discuss local/external variables, blocks (compound statements containing declarations), scope rules, and how to organize the big program.
 
 ◊section{local variables}
 
 A variable declared in the body of a function definition is said to be local to the function. Local variables have automatic storage duration (or extent) and block scope.
 
-When you declare a variable, it requires a memory to be allocated to store a value in the variable. The "automatic" means that the allocation process is automatically done. When the function wrapping a local variable is called, a memory for the variable is allocated. When the function returns, the memory is deallocated.
+When you declare a variable, it requires a memory to be allocated to store a value in the variable. The "automatic" means that the allocation process is automatically done. When the function wrapping a local variable is called, a memory for the variable is allocated. When the function returns (that is, after its return value get printed in the main function), the memory is deallocated, and the return value isn't guaranteed to still have its old value.
 
-A variable in a program has a boundary that the variable can be seen (so that you can use the value related to it). This boundary is called the scope. A local variable has block scope: its boundary starts when the variable is declared, and ends when the function (that you declared the variable) body ends.
+A variable in a program has a boundary that it can be seen. This boundary is called the scope. A local variable has block scope: its boundary starts when the variable is declared, and ends when the function body containing the local variable ends.
 
 ◊bold{Static Local Variables}
 
 When you append ◊code{static} before the type of a local variable to be declared, it causes the variable to have static storage duration. A variable with this property continue to have its value throughout the ◊uc{execution of the program}. Because it's local variable, its block scope property makes other functions not able to see the variable. But static local variable is useful when the function that has the variable in its body is to be called in the future.
+
+◊?{Is using a local variable's value as return value different with the fact that the local variable isn't visible to other functions?}
 
 ◊bold{Parameters}
 
@@ -29,9 +31,9 @@ Unlike local variables, external variables have static storage duration, and hav
 
 ◊bold{Pros and Cons of External Variables}
 
-In most case, it's better to communicate with parameters (use return value of a function as an argument of another one) than by sharing variables.
+In most case, it's better to communicate with parameters (use return value of a function as an argument of another function) than by sharing variables.
 
-The more functions that uses external variables, the more binding between functions. As a result, modifying one function possibly affects other function, making it hard to maintenance or reuse.
+The more functions that uses external variables, the more binding between functions. As a result, modifying one function possibly affects other function, making it hard to maintenance or reuse the program.
 
 ◊section{blocks}
 
