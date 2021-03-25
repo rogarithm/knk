@@ -37,7 +37,7 @@ By using an array created unnamed, we can simplify the process of assigning a po
 
 We can use pointer arithmetic for array processing (like iteration with array elements). Pointer to an array element can replace subscript. The example in this section uses the statement ◊code{p < &a[N]} where ◊code{p} is a pointer, ◊code{a} is an array that has ◊code{N} elements. Since the array has its element range from ◊code{0} to ◊code{N - 1}, there's no ◊code{a[N]}, but it's safe to use because the compiler doesn't attempt to inspect the value in detail.
 
-Why we use pointer for array processing instead of subscripting? Because it's faster. But it depends on the implementation, and now we have hugely improved PCs, it doesn't matter that much as before.
+Why we use pointer for array processing instead of subscripting? Because it's faster. But it depends on the implementation, and now that we have hugely improved PCs, it doesn't matter that much as before.
 
 ◊bold{combining the * and ++ (or --) operators}
 
@@ -48,7 +48,8 @@ expression | meaning
 *p++ or *(p++) | Value is ◊code{*p}; increment ◊code{p} later
 (*p)++ | Value is ◊code{*p}; increment ◊code{*p} later
 *++p or *(++p) | Increment ◊code{p} now; value is ◊code{*p} after increment (that affected the order of array element)
-++*p or ++(*p) | Increment ◊code{*p} now; value is ◊code{*p} after increment (that affected the number of element)
+++*p or ++(*p) | Increment ◊code{*p} now; value is ◊uc{◊code{*p}} after increment (that affected the number of element)
+}
 
 ◊section{using an array name as a pointer}
 
@@ -72,17 +73,17 @@ int *p = &a[0];
 *(a+1) = 12; /* same as a[1] = 12 */
 }
 
-If you expand the pointer arithmetic with array name, you can see that pointer arithmetic can be viewed as a array subscripting. It can be used to replace an array subscripting with an array name and (possibly) statement contains pointer arithmetic using the array name.
+If you expand the pointer arithmetic with array name, you can see that pointer arithmetic can be viewed as an array subscripting. ◊clarify{It can be used to replace an array subscripting with an array name and (possibly) statement contains pointer arithmetic using the array name.}
 
 ◊caution{Although we can use an array name as a pointer, we cannot assign other value to the array name. The array name can only point the first element of that array. ◊?{But just before, we did assign a value to an array name (◊code{*p = 7;}). What's the intend of the author? What am I thinking wrong?}}
 
 ◊bold{array arguments (revisited)}
 
-When we call a function that consumes an array variable, an array argument is treated as a pointer; the array is not copied, only its first element is assigned to the ◊uc{parameter}. As we saw in the section explains call by value, when an ordinary variable is passed to a function, its value is copied, and any changes to ◊uc{the corresponding parameter} don't affect the variable. But the value of an array used as an argument, unlike ordinary variables, isn't copied (it only have the first element of the array.) Thus when an array parameter get changed, it affects the variable.
+When we call a function that consumes an array variable, an array argument is treated as a pointer; the array is not copied, only its first element is assigned to the ◊uc{parameter}. As we saw in the section explaining call by value, when an ordinary variable is passed to a function, its value is copied, and any changes to ◊uc{the corresponding parameter} don't affect the variable. But the value of an array used as an argument isn't copied, unlike ordinary variables (it only have the first element of the array.) ◊uc{Thus} when an array parameter get changed, it affects the variable.
 
-If an array parameter should not be changed, we can do this by letting ◊code{const} be preceded.
+If an array parameter should not be changed, we can document with ◊code{const}.
 
-An array parameter can be declared as a pointer. It's ◊uc{equivalent} to declaring it to be an array. ◊caution{Unlike the case for parameter, for the case declaring as a variable, it's not identical. For a variable declared as an array, the compiler set aside space for the number of elements of the array. But when declared as a pointer, the compiler only allocate space for a pointer variable. Thus attempting to use a pointer-declared variable as an array can be a problem.}
+An array parameter can be declared as a pointer. It's ◊uc{equivalent} to declaring it to be an array. ◊caution{Unlike the case for parameter, when declaring an array as a variable, the two cases are not the same. For a variable declared as an array, the compiler set aside space for the number of elements of the array. But when declared as a pointer, the compiler only allocate space for a pointer variable. Thus attempting to use a pointer-declared variable as an array can be a problem.}
 
 ◊later{an array parameter can be passed with part of the array}
 
