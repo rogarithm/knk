@@ -27,3 +27,4 @@ e7 ok.
 ? e8
 
  - works. but is it valid to declare a pointer inside a function and use it as a return value for main?
+ Yes. Because the pointer inside the function also has an address, and its value remains the same as in the function ◊code{find_largest}.

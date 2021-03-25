@@ -163,9 +163,11 @@ If the compiler hasn't seen the function's definition or prototype before the fu
 
 ◊bold{Array Arguments}
 
-Array can be used as function argument. For one-dimensional array, the length of ◊strong{parameter} can be left unspecified. But if the function needs its length, (for now) we need to give it explicitly ◊uc{in function call as an argument}.
+We can use arrays as arguments. When using as function parameter or function prototype, arrays are specified with its name and brackets. Length can be (and is normally) unspecified.
 
-When calling a function with array parameter, just specify an array name without brackets (which is a must for array paramter).
+What if a function needs the length? Give it explicitly as an additional argument.
+
+When calling a function that has array parameter, don't put brackets after an array name for parameter.
 
 The compiler can't check whether we give right length of an array. This feature can be used to compute only a part of an array by giving a length shorter than its original length. But we also need to be careful not to give longer length of array, because it may cause undefined behavior.
 
