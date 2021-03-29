@@ -1,0 +1,8 @@
+int a[] = {5, 15, 34, 54, 14, 2, 52, 72};
+int *p = &a[1], *q = &a[5]; // now p points 15, q points 2
+
+(a) What is the value of *(p+3)? *(a[4]) = 14
+(b) What is the value of *(q-3)? *(a[2]) = 34
+(c) What is the value of q-p? 4
+(d) Is the condition p < q true or false? true.
+(e) Is the condition *p < *q true or false? false.
