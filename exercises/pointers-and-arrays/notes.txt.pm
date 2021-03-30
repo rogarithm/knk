@@ -34,3 +34,20 @@ e12
  - use find_largest function, but modify it to return the index of the largest element.
  - From the information, search through the array the largest element except the element of the index.
  - but this method may use subscript. Is this problem?
+
+e13
+
+ - idea: initialize every elements with 0, and reinitialize 1, 1+n+1, ... with 1.
+ ? for (p = ident[0], p < ident + N*N, p++)
+
+e14 ok.
+
+ - idea for generating temperature array?
+
+? e15 noted with q
+
+e16 needs test.
+
+e17 To test, needs code to initialize random 2-d array
+
+N e18
