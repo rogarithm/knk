@@ -83,59 +83,74 @@ When we call a function that consumes an array variable, an array argument is tr
 
 If an array parameter should not be changed, we can document with ◊code{const}.
 
-An array parameter can be declared as a pointer. It's ◊uc{equivalent} to declaring it to be an array. ◊caution{Unlike the case for parameter, when declaring an array as a variable, the two cases are not the same. For a variable declared as an array, the compiler set aside space for the number of elements of the array. But when declared as a pointer, the compiler only allocate space for a pointer variable. Thus attempting to use a pointer-declared variable as an array can be a problem.}
+An array parameter (that is, when it is used in a function definition) can be declared as a pointer. It's ◊uc{equivalent} to declaring it to be an array. ◊caution{Unlike the case for parameter, when declaring an array as a variable, the two cases are not the same. For a variable declared as an array, the compiler set aside space for the number of elements of the array. But when declared as a pointer, the compiler only allocate space for a pointer variable. Thus, attempting to use a one version of variable as another version can be a problem.}
 
 ◊compare-loop-using-three-concepts
 
 Why array argument for function isn't passed by value? Because it's given as a pointer to the first element of the array. So it isn't protected by modification.
 
-◊later{an array parameter can be passed with part of the array}
+An array parameter can be passed with part of the array. By default, when we give a function an array name, the name is treated as the pointer points to the first element of the array. If we give, say, &a[5], we can start with the pointer of a with its subscript value 5. The preceding & is required because a[5] is an object, not pointer.
 
 ◊bold{using a pointer as an array name}
 
-A pointer pointing to an array can be used as the array, and can apply subscript to the pointer as if it were an array.
+An array name can be used as a pointer, and we can process the array with additional pointer and pointer arithemetic with it. Similar to this, a pointer can be subscripted as it were an array name.
 
+◊codeblock{
 int a[10], i, sum = 0, *p = a;
-... p[1];
 
-p[1] is the same as a[1].
+for (i = 0; i < 10; i++)
+  sum += p[i];
+}
+
+Though ◊c{p} is not an array, it can use subsctiption.
 
 ◊section{pointers and multidimensional arrays}
-
-◊temp{apply contents 12.1~12.3 to multidimensional arrays}
 
 The relationship between pointers and one dimensional arrays can be applied to pointers and multidimensional arrays.
 
 ◊bold{processing the elements of a multidimensional array}
 
-As we've seen in section 8.2, two-dimensional arrays are stored in one row, but every coloumn number of element is considered as individual row. We can use this fact to visit through every element of two-dimensional array by using a pointer that points to the first element of the two-dimensional array.
+Two-dimensional arrays are stored in one row, but every coloumn number of element is considered as individual row. We can use this fact to visit through every element of two-dimensional array by repeating to increment a pointer points to the array without care about column.
 
-Using this decrease your program's readability.
+Careful. Using this decrease your program's readability.
 
 ◊bold{processing the rows of a multidimensional array}
 
-To process a specific row of 2-d array, you can either initialize a pointer:
+To process a specific row of 2-d array, you can either initialize a pointer for array of row i with ◊c{p = &a[i][0]} or ◊c{p = a[i]}. As for 1-d array ◊c{a}, ◊c{a} refers to the first element of the array, for 2-d array, ◊c{a[i]} refers to the first element of the ith row of the array.
 
-p = &a[i][0];  |  p = a[i];
-
-A pointer points to array is the first element of the array. In this case, the pointer ◊code{p} points to ◊code{a[i]}, the ◊code{i}th row of the array. So ◊code{p} points to the first element of the ◊code{i}th row of the array.
-
-We can use this processing method to a function for 1-d array by giving the function an array's pointer of target row, and restricting its loop to iterate for the number of column.
+This method can be used to process a specific row of a 2-d array. Instead of 1-d array name, give the function an ith row of 2-d array. It makes functions created for 1-d array in mind easily reused for a row of 2-d array.
 
 ◊bold{processing the columns of a multidimensional array}
 
-Declare a pointer to an array of column length, not as an array of pointers.
+int (*p)[NUM_COLS] not int *p[NUM_COLS]. Array subscription ([]) operator has lower precedence than indirection operator (*). So if you want * to be applied first than [], enclose, say, *p with parentheses.
 
-int (*p)[NUM_COLS] not int *p[NUM_COLS]. Array subscription ([]) operator has lower precedence than indirection operator (*).
-
-◊uc{In the expression (*p)[i], *p represents an entire row of a, so (*p)[i] selects the element in column i of that row.}
+Declare a pointer points to an array of one row. ◊uc{It seems that the unit of processing get multiplied from one element to one row. So when incrementing p, it moves by one row, not one element, and *p represents one row of an array, not one element of the array.} As we've seen that a pointer can use subscription to access array's elements, (*p)[i] let us access ith element of the current row represented by (*p).
 
 ◊bold{using the name of a multidimensional array as a pointer}
 
-You can use a pointer to process any dimensional array. As an example, for 2-d array a[row][col], a is a pointer to a[0], not a[0][0]. Because C treats 2-d arrays as a 1-d array whose elements are 1-d arrays each. These "inner" arrays have column number of elements. ◊uc{So} used as a pointer, a has type int (*)[number-of-columns].
+You can use a name of multi-d array as a pointer to process any dimensional array. As an example, for 2-d array ◊c{a[row][col]}, ◊c{a} is a pointer to ◊c{a[0]}, not ◊c{a[0][0]}. Because C treats 2-d arrays as a 1-d array whose elements are 1-d arrays each. These "inner" arrays have column number of elements. ◊uc{So} used as a pointer, ◊c{a} has type int (*)[number-of-columns] (as we've seen in processing the columns of a multi-d array).
+
+Instead of using ◊c{&a[0]} to point the first row of 2-d array, you can just use ◊c{a}.
+
+If you want to point the very first element (that is, ◊c{a[0][0]}), ◊c{a} is not enough. Use ◊c{a[0]}.
 
 ◊section{pointers and variable-length arrays (c99)}
 
 ◊temp{relationship between pointers and variable-length arrays}
 
-Pointers can point to VLA for any dimension. ◊uc{For more than 2-d VLAs, the type of the pointer depends on the length of each dimension except for the first.}
+Pointers can point to VLA for any dimension. VLA's dimension is not a constant:
+
+◊codeblock{
+void f(int n)
+{
+  int a[m][n], (*p)[n];
+	p = a;
+	...
+}
+}
+
+The type of ◊c{p} depends on ◊c{n}, so ◊c{p} is said to have a variably modified type.
+
+The declaration of a variably modified type must be inside the body of a function or in a function prototype.
+
+◊uc{For more than 2-d VLAs, the type of the pointer depends on the length of each dimension except for the first.}
