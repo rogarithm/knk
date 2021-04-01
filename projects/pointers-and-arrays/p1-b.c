@@ -17,7 +17,8 @@ int main(void)
 	{
 		*p++ = ch;
 	}
-	// <- something should be here to remove garbage
+	// <- something should be here to remove garbage. That is...
+	p--; // last position should be undo, because it has no content.
 
 	printf("Reversal is: ");
 
