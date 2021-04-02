@@ -166,11 +166,41 @@ int count_spaces(const char *s)
 
 ◊section{using the c string library}
 
+There's no operators in C that can copy strings, compare strings, concatenate strings, select substrings, and the like. Instead, the C library (<string.h>) provides functions for strings.
+
+Strings are treated as arrays in C, so they're restricted in the same ways as arrays. ◊uc{They can't be copied or compared using operators:
+
+This is wrong.
+
+◊codeblock{
+char str1[10], str2[10];
+str1 = "abc";
+str2 = str1;
+}
+
+But this is legal.
+
+◊c{char str1[10] = "abc";}
+}
+
+String parameters are declared with char *. String variables can be char *, or a string literal. If a string parameter is not declared ◊c{const}, the parameter may be modified when the function is called. So the corresponding argument shouldn't be a string literal.
+
 ◊bold{the strcpy (string copy) function}
+
+Prototype is ◊c{char *strcpy(char *s1, const char *s2);}. Returns ◊c{s1}. Copies the string ◊c{s2} into the string ◊c{s1}. ◊?{If ◊c{s1} has content, would the strcpy remove its content? Or should ◊c{s1} be empty, with only its length is declared?}
+
+If destination string isn't large enought to copy source string, the behavior of strcpy is undefined. Using strncpy is a safer way to copy a string. ◊c{strncpy(str1, str2, sizeof(str1));} guarantees source string will be copied without problem if destination string is large enough to hold the source string. But this method also has a problem when source string is greater than or equal to the size of the array of destination string. To remedy, guarantee the last element of destination string always will be the null character:
+
+◊codeblock{
+strncpy(str1, str2, sizeof(str1) - 1);
+str1[sizeof(str1)-1] = '\0';
+}
 
 ◊bold{the strlen (string length) function}
 
-strlen, when a given argument is an array, only returns the length of the string stored in the array, not the length of the array. That is:
+Prototype is ◊c{size_t strlen(const char *s);}.
+
+strlen, when a given argument is an array, only returns the length of the string stored in the array up to, but not including the first null character, not the length of the array. That is:
 
 ◊codeblock{
 int len;
@@ -184,13 +214,71 @@ After the last statement, len is 3, not 20.
 
 ◊bold{the strcat (string concatenation) function}
 
+Prototype is ◊c{char *strcat(char *s1, const char *s2);}. This function appends the contents of the string ◊c{s2} to the end of the string ◊c{s1}; it returns ◊c{s1}.
+
+strcat isn't safe when there's not enough space to concatenate source string:
+
+◊codeblock{
+char str1[6] = "abc";
+strcat(str1, "def");
+}
+
+It causes strcat to write past the end of the array. strncat is a safer version of strcat. This function enables us to determine the number of characters to copy.
+
 ◊bold{the strcmp (string comparison) function}
+
+Prototype is ◊c{int strcmp(const char *s1, const char *s2);}
+
+To compare two strings, we can use relational operator (<, <=, >, >=) or equality operator (==, !=).
+
+What is "less"? When a character has lexicographically faster order than other character.
+
+- Less string is determined by the first unmatching character. A string that has less character for the first unmatching character is lesser string.
+- All characters match, but one string has more characters, than the other string is lesser string.
 
 ◊section{string idioms}
 
 ◊bold{searching for the end of a string}
 
+The integer value of the null character is 0, so *s != '\0' is the same as *s != 0, and it is also the same as *s, because:
+*s != 0 returns 1 when *s isn't 0, and returns 0 when *s is 0.
+*s returns 1 when *s isn't 0, and returns 0 when *s is 0.
+which is, just the same. Thus *s != 0 is interchangeable with *s.
+
+◊codeblock{
+size_t strlen(const char *s)   | size_t strlen(const char *s) | size_t strlen(const char *s)
+{                              | {                            | {                           
+	size_t n;                    | 	size_t n = 0;               | 	size_t n = 0;             
+                               |                              |                             
+	for (n = 0; *s != '\0'; s++) | 	for (; *s; s++)             | 	while (*s++)
+	  n++;                       | 	  n++;                      | 	  n++;                    
+	return n;                    | 		return n;                 | 		return n;               
+}                              | }                            | }                           
+}
+
 ◊bold{copying a string}
+
+◊codeblock{
+char *strcat(char *s1, const char *s2) | char *strcat(char *s1, const char *s2)
+{                                      | {                                     
+	char *p = s1;                        | 	char *p = s1;                              
+                                       |                                              
+	while (*p != '\0')                   | 	while (*p)                                 
+	  p++;                               | 	p++;                                       
+	◊#{now p points the null of s1}	     | 	◊#{now p points the null of s1}
+  while (*s2 != '\0')                  | 	while (*p++ = *s2++)                       
+	{                                    | 	◊#{when *s2 is null, the value of
+		*p = *s2;                          | 		(*p++ = *s2++) should be 0 to go
+		p++;                               | 		out of the loop. But why? Because
+		s2++; ◊#{why this is possible?}    | 		the control ? tests the value of the     
+	}                                    | 		statement, which is the primary operator 
+	◊#{now p points the null of s2,      | 		inside the parentheses.}
+		but as the body isn't evaluated,   | 	;                                
+		the null is not assigned.}         | 	return s1;                         
+	*p = '\0';                           | }                                     
+	return s1;                           | 
+}                                      | 
+}                                      | 
 
 ◊section{array of strings}
 
