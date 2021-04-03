@@ -1,0 +1,22 @@
+which one is not equivalent to the other three?
+
+char *str;
+(a) *str = 0; -> is it legal?
+Three below seem to be the same.
+(b) str[0] = '\0';
+(c) strcpy(str, "");
+(d) strcat(str, "");
+
+int main(void)
+{
+char *str
+
+*str = 0;
+putchar(str[0]);
+str[0] = '\0';
+putchar(str[0]);
+strcpy(str, "");
+putchar(str[0]);
+strcat(str, "");
+putchar(str[0]);
+}
