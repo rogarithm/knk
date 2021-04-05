@@ -1,0 +1,3 @@
+macros don't have arrays
+
+need check: macro can use statements? loops? variable assignment?
